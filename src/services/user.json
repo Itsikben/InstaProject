@@ -1,0 +1,17 @@
+{
+    "id": 0,
+    "userName": "string",
+    "password": "string",
+    "userDescriptions": "string",
+    "profilePic": "id of a photo",
+    "postIds": [],
+    "followersIds": [],
+    "followingIds": [],
+    "personalDetails": {
+        "firstName": "moti",
+        "lastName": "cohen",
+        "email": "string",
+        "address": "bla street 57"
+    }
+}
+

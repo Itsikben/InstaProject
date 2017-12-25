@@ -1,0 +1,18 @@
+{
+    "userId": "userId",
+    "_id": "_id",
+    "imgUrl": "img url",
+    "createdAt": "47479987",
+    "postText": "string",
+    "geoLocation": {
+        "lat": "x",
+        "long": "Y"
+    },
+    "likes": [],
+    "comments": [
+        {
+            "userId": 1,
+            "text": "string"
+        }
+    ]
+}
