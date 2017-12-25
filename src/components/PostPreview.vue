@@ -6,12 +6,16 @@
       </div>
       <span class="user-name">sumbat_tad</span> 
     </div>
-    <div class="post-img">
-      <img src="https://www.trvl.co.il/wp-content/uploads/2017/02/puppy-1903313_1280.jpg" alt="">
+    <div class="post-img" @dblclick="like">
+      <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
+      <img src="https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy" alt="">
     </div>
     <div class="post-statistics">
       <div>
-        <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+        <span @click="toggleLike">
+          <i v-if="!isLiked" class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+          <i v-else class="fa fa-heart fa-2x red" aria-hidden="true"></i>
+        </span> 
         <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
         <p>1,756 likes</p>
       </div>
@@ -22,9 +26,9 @@
       <span>sometimes you have to jump and build your wings on the way down..🌌</span>     
     </div>
     <div class="post-comments">
-      <div class="comment" v-for="n in 4" :key="n">
-        <span class="user-name">dani_vaitzman</span> 
-        <span>omg unbelivobalets</span>     
+      <div class="comment" v-for="(comment,index) in comments" :key="index">
+        <span class="user-name">{{comment.user}}</span> 
+        <span>{{comment.comment}}</span>     
       </div>
     </div>
     <div class="post-createdtime">
@@ -32,7 +36,7 @@
     </div>
     <hr/>
     <div class="post-addcomment">
-      <textarea class="comment-textarea" type="text" placeholder="Add a comment..."></textarea>
+      <textarea v-model="tempComment.comment" class="comment-textarea" type="text" placeholder="Add a comment..." @keypress.enter.prevent="addComment"></textarea>
     </div>
   </section>
 </template>
@@ -42,18 +46,63 @@ export default {
   name: "PostPreview",
   data() {
     return {
+      comments:[
+      ],
+      tempComment:{
+        user:'sumbat_tad',
+        comment:''
+      },
+      isLiked:false,
+      likeAnim:false,
       msg: "Welcome to Your Vue.js App"
     };
+  },
+  computed:{
+    likeAnimClass(){
+      return{
+        'animated bounceIn': this.likeAnim,
+        'animated zoomOut': !this.likeAnim,
+      }
+    }
+  },
+  methods:{
+    addComment(){
+      this.comments.push(this.tempComment);
+      this.tempComment = {
+        user:'sumbat_tad',
+        comment:''
+      }
+    },
+    toggleLike(){
+      this.isLiked = !this.isLiked;
+      this.animateLike();
+      
+    },
+    animateLike(){
+      this.likeAnim = true;
+      setTimeout(() => {
+        this.likeAnim = false;
+      }, 1000);
+    },
+    like(){
+      this.isLiked = true;
+      this.animateLike();
+    }
   }
 };
 </script>
 <style scoped>
+.red{
+  color: #ed4956;
+}
 .post-addcomment{
   font-size: 1.2em;
   display: flex;
   padding: 16px 16px;
+  
 }
 .comment-textarea {
+  width: 100%;
   background: 0 0;
   border: none;
   color: #262626;
@@ -65,8 +114,9 @@ export default {
   resize: none;
 }
 .post {
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: 50px;
+  border-radius: 3px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;;
+  margin: 0 auto;
   font-size: 0.83em;
   border: 1px solid #e6e6e6;
   max-width: 615px;
@@ -83,6 +133,7 @@ hr {
 .post-comments {
   padding: 10px;
   text-align: left;
+  max-width: 100%;
 }
 .comment {
   padding: 0;
@@ -117,19 +168,28 @@ hr {
   padding: 10px;
 }
 .user-name {
-  font-weight: 700;
+  font-weight: 600;
 }
 .user-img {
   border: 1px solid #e6e6e6;
-
   width: 36px;
   height: 36px;
   margin: 0;
   border-radius: 50%;
   border: 2px solid white;
 }
+.post-img {
+  position: relative;
+  width: 100%;
+}
 .post-img img {
   width: 100%;
+}
+.post-img i {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.719);
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
 }
 .instagram {
   margin-right: 7px;
