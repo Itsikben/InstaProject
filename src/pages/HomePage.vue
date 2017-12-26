@@ -1,12 +1,13 @@
 
 <template>
 <section>
+  <button @click="isLogged = !isLogged">isLogged is now:{{isLogged}}</button>
     <div v-if="isLogged">
         <h2>HomePage</h2>
         <followers-list></followers-list>
         <posts-list></posts-list>
     </div>
-    <followers-list v-else></followers-list>
+    <pre-loggin v-else></pre-loggin>
     </section>
 </template>
 
@@ -21,11 +22,17 @@ export default {
   name: "HomePage",
   data() {
     return {
-      isLogged: true
+        isLogged: true
     };
   },
   created() {
     this.name = this.$store.getters.imageName;
+  },
+  computed:{
+    // isLogged(){
+
+    //   return 
+    // }
   },
   components: {
     PostsList,
