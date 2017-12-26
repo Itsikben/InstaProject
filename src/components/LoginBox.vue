@@ -1,13 +1,20 @@
 <template>
   <section>
     <h1>Instagram</h1>
-    <form v-if="signUpActive">
+    <form v-if="!signUpActive">
       <input type="text" placeholder="User name/Email" v-model="userName">
       <input type="password" placeholder="Password" v-model="pass"><br>
       <button @click.prevent="login">Log in</button><br>
       </form>
+    <form v-else>
+      <input type="text" placeholder="User name" v-model="userName"><br>
+      <input type="password" placeholder="Password" v-model="pass"><br>
+      <input type="email" placeholder="Email" v-model="userName"><br>
+      <input type="text" placeholder="full name" v-model="pass"><br>
+      <button @click.prevent="login">Log in</button><br>
+      </form>
       <button>Forgot password?</button>
-      <p>not signed up yet?<button @click="toggleSignUp">Sign up</button></p>
+      <p>not signed up yet?<a @click="toggleSignUp"> Sign up</a></p>
       <!-- <img src="https://media.istockphoto.com/photos/dog-in-the-city-park-picture-id505823546"> -->
   </section>
 </template>
@@ -24,11 +31,21 @@ export default {
     };
   },
   methods: {
+    toggleSignUp(){
+      if(this.signUpActive){
+        this.signUpActive = false
+
+      }
+      else{
+        this.signUpActive = true
+      }
+
+      },
     login() {
       var user = userService.validateUser(this.userName, this.pass);
       console.log(user);
       this.$store.commit('updateUser',user);
-      // console.log(this.userName)
+      // console.log(this.userName) 
       // console.log(this.pass)
     }
   }
@@ -36,6 +53,9 @@ export default {
 </script>
 
 <style scoped>
+input{
+  margin-top:7px;
+}
 section {
   margin: auto;
   border: 1px solid rgb(115, 142, 153);
@@ -72,5 +92,8 @@ button {
     inset 0px 0px 5px rgba(49, 55, 168, 0.6);
   text-shadow: 0px -1px 3px rgba(56, 49, 56, 0.8),
     0px 1px 0px rgba(46, 97, 94, 0.3);
+}
+p a:hover{
+cursor: pointer;
 }
 </style>
