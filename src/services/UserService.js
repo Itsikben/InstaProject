@@ -1,53 +1,80 @@
 
 var users = [
     {
-        id: 0,
-        userName: "ori",
-        pass: "1"
-
+        "_id": 0,
+        "userName": "itsik",
+        "pass": "123456",
+        "userDescriptions": "speical user",
+        "profilePic": 0,
+        "postIds": [0,1,2,3],
+        "followersIds": [1,2,3],
+        "followingIds": [1,2],
+        "personalDetails": {
+            "firstName": "Itsik",
+            "lastName": "Ben Arza",
+            "email": "itsik@gmail.com",
+            "address": "bla street 57"
+        }
     },
     {
-        id: 1,
-        userName: "itsik",
-        pass: "12"
-
+        "_id": 1,
+        "userName": "ori",
+        "pass": "123456",
+        "userDescriptions": "ori user",
+        "profilePic": 0,
+        "postIds": [0,1,2,3],
+        "followersIds": [1,2],
+        "followingIds": [0,2],
+        "personalDetails": {
+            "firstName": "Ori",
+            "lastName": "Lapushner",
+            "email": "ori@gmail.com",
+            "address": "bla street 57"
+        }
     },
     {
-        id: 2,
-        userName: "ido",
-        pass: "123"
-
+        "_id": 2,
+        "userName": "Ido",
+        "pass": "123456",
+        "userDescriptions": "sumbat speical user",
+        "profilePic": 0,
+        "postIds": [0,1,2,3],
+        "followersIds": [0,1,3],
+        "followingIds": [0,1],
+        "personalDetails": {
+            "firstName": "Ido",
+            "lastName": "Terem",
+            "email": "ido@gmail.com",
+            "address": "bla street 57"
+        }
+    },
+    {
+        "id": 3,
+        "userName": "Sumbat",
+        "pass": "123456",
+        "userDescriptions": "sumbat speical user",
+        "profilePic": 3,
+        "postIds": [0,1,2,3],
+        "followersIds": [1,2],
+        "followingIds": [1,2],
+        "personalDetails": {
+            "firstName": "Sumbat",
+            "lastName": "Ha Gever",
+            "email": "itsik@gmail.com",
+            "address": "bla street 57"
+        }
     }
 
 ]
+function login(userCreds) {
+    return new Promise((resolve,reject) => {
+        var u = users.find((u) => {
+            return ((u.userName === userCreds.userName) && (u.pass === userCreds.pass));
+        });
 
-function validateUser(inputUserName, inputPass) {
-    return users.filter((user, pass) => {
-        return (user.userName === inputUserName &&
-            user.pass === inputPass)
-    })
+        if(u) resolve(u)
+    });
 }
-
-var testUser = JSON.parse(`
-{
-    "id": 0,
-    "userName": "itsik",
-    "password": "123456",
-    "userDescriptions": "string",
-    "profilePic": "id of a photo",
-    "postIds": [],
-    "followersIds": [],
-    "followingIds": [],
-    "personalDetails": {
-        "firstName": "Itsik",
-        "lastName": "Ben Arza",
-        "email": "itsik@gmail.com",
-        "address": "bla street 57"
-    }
-}
-`)
-
-var users = [testUser];
 
 function getUsers() {
     return Promise.resolve(users);
@@ -62,7 +89,7 @@ function getUserById(userId) {
 }
 
 export default {
-    validateUser,
     getUserById,
-    getUsers
+    getUsers,
+    login
 }

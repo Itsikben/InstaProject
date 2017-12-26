@@ -31,30 +31,23 @@ export default {
     };
   },
   methods: {
-    toggleSignUp(){
-      if(this.signUpActive){
-        this.signUpActive = false
-
+    toggleSignUp() {
+      if (this.signUpActive) {
+        this.signUpActive = false;
+      } else {
+        this.signUpActive = true;
       }
-      else{
-        this.signUpActive = true
-      }
-
-      },
+    },
     login() {
-      var user = userService.validateUser(this.userName, this.pass);
-      console.log(user);
-      this.$store.commit('updateUser',user);
-      // console.log(this.userName) 
-      // console.log(this.pass)
+      this.$store.dispatch("login", {userName: this.userName, pass: this.pass});
     }
   }
 };
 </script>
 
 <style scoped>
-input{
-  margin-top:7px;
+input {
+  margin-top: 7px;
 }
 section {
   margin: auto;
@@ -93,7 +86,7 @@ button {
   text-shadow: 0px -1px 3px rgba(56, 49, 56, 0.8),
     0px 1px 0px rgba(46, 97, 94, 0.3);
 }
-p a:hover{
-cursor: pointer;
+p a:hover {
+  cursor: pointer;
 }
 </style>
