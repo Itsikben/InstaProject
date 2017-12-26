@@ -1,7 +1,7 @@
 
 <template>
 <section>
-  <button @click="isLogged = !isLogged">isLogged is now:{{isLogged}}</button>
+  <button @click="logout">temp logout</button>
     <div v-if="isLogged">
         <h2>HomePage</h2>
         <followers-list></followers-list>
@@ -22,17 +22,23 @@ export default {
   name: "HomePage",
   data() {
     return {
-        isLogged: true
+        // isLogged: true
     };
   },
   created() {
     this.name = this.$store.getters.imageName;
+      
   },
   computed:{
-    // isLogged(){
-
-    //   return 
-    // }
+    isLogged(){
+      return !!this.$store.state.user.user
+      
+    }
+  },
+  methods: {
+    logout(){
+      this.$store.commit('setUser',{user: null})
+    }
   },
   components: {
     PostsList,
