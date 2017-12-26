@@ -22,11 +22,17 @@ export default {
   name: "HomePage",
   data() {
     return {
-      isLogged: true
+        isLogged: true
     };
   },
   created() {
     this.name = this.$store.getters.imageName;
+  },
+  computed:{
+    // isLogged(){
+
+    //   return 
+    // }
   },
   components: {
     PostsList,
