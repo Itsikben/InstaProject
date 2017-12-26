@@ -38,6 +38,9 @@ export default {
             UserService.login(userCreds).then(user => {
                 commit({type: 'setUser',user});
             })
+        },
+        saveChanges(){
+
         }
 
     }
