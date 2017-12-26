@@ -1,13 +1,13 @@
 <template>
   <section>
     <h1>Instagram</h1>
-    <form>
+    <form v-if="signUpActive">
       <input type="text" placeholder="User name/Email" v-model="userName">
       <input type="password" placeholder="Password" v-model="pass"><br>
       <button @click.prevent="login">Log in</button><br>
       </form>
       <button>Forgot password?</button>
-      <p>not signed up yet?<button>Sign up</button></p>
+      <p>not signed up yet?<button @click="toggleSignUp">Sign up</button></p>
       <!-- <img src="https://media.istockphoto.com/photos/dog-in-the-city-park-picture-id505823546"> -->
   </section>
 </template>
@@ -18,6 +18,7 @@ export default {
   name: "LoginBox",
   data() {
     return {
+      signUpActive: false,
       userName: "",
       pass: ""
     };
