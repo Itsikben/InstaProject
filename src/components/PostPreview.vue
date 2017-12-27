@@ -68,7 +68,7 @@ export default {
     }
   },
   created(){
-   posts = this.$store.dispatch({type: 'loadPosts'});
+  this.$store.dispatch({type: 'loadPosts'});
   },
   methods:{
     addComment(){
