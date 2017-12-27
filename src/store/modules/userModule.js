@@ -2,23 +2,23 @@ import UserService from "../../services/UserService.js";
 
 export default {
     state: {
-        // user: null
-        user: {
-            "id": 3,
-            "userName": "Sumbat",
-            "pass": "123456",
-            "userDescriptions": "sumbat speical user",
-            "profilePic": "http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514319715/noimg_obp9e7.jpg",
-            "postIds": [0, 1, 2, 3],
-            "followersIds": [1, 2],
-            "followingIds": [1, 2],
-            "personalDetails": {
-                "firstName": "Sumbat",
-                "lastName": "Ha Gever",
-                "email": "sumbat@gmail.com",
-                "address": "bla street 57"
-            }
-        }
+        user: null,
+        // user: {
+        //     "id": 3,
+        //     "userName": "Sumbat",
+        //     "pass": "123456",
+        //     "userDescriptions": "sumbat speical user",
+        //     "profilePic": 3,
+        //     "postIds": [0, 1, 2, 3],
+        //     "followersIds": [1, 2],
+        //     "followingIds": [1, 2],
+        //     "personalDetails": {
+        //         "firstName": "Sumbat",
+        //         "lastName": "Ha Gever",
+        //         "email": "sumbat@gmail.com",
+        //         "address": "bla street 57"
+        //     }
+        // }
     },
     getters: {
         getUser(state,getters){
