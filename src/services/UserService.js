@@ -1,72 +1,22 @@
+const USER_URL = 'http://localhost:3003/data/user'
+const LOGIN_URL = 'http://localhost:3003/login'
 
-var users = [
-    {
-        "_id": 0,
-        "userName": "itsik",
-        "pass": "123456",
-        "userDescriptions": "speical user",
-        "profilePic": 0,
-        "postIds": [0,1,2,3],
-        "followersIds": [1,2,3],
-        "followingIds": [1,2],
-        "personalDetails": {
-            "firstName": "Itsik",
-            "lastName": "Ben Arza",
-            "email": "itsik@gmail.com",
-            "address": "bla street 57"
-        }
-    },
-    {
-        "_id": 1,
-        "userName": "ori",
-        "pass": "123456",
-        "userDescriptions": "ori user",
-        "profilePic":  'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
-        "postIds": [0,1,2,3],
-        "followersIds": [1,2],
-        "followingIds": [0,2],
-        "personalDetails": {
-            "firstName": "Ori",
-            "lastName": "Lapushner",
-            "email": "ori@gmail.com",
-            "address": "bla street 57"
-        }
-    },
-    {
-        "_id": 2,
-        "userName": "Ido",
-        "pass": "123456",
-        "userDescriptions": "sumbat speical user",
-        "profilePic": 'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
-        "postIds": [0,1,2,3],
-        "followersIds": [0,1,3],
-        "followingIds": [0,1],
-        "personalDetails": {
-            "firstName": "Ido",
-            "lastName": "Terem",
-            "email": "ido@gmail.com",
-            "address": "bla street 57"
-        }
-    },
-    {
-        "id": 3,
-        "userName": "Sumbat",
-        "pass": "123456",
-        "userDescriptions": "sumbat speical user",
-        "profilePic":  'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
-        "postIds": [0,1,2,3],
-        "followersIds": [1,2],
-        "followingIds": [1,2],
-        "personalDetails": {
-            "firstName": "Sumbat",
-            "lastName": "Ha Gever",
-            "email": "itsik@gmail.com",
-            "address": "bla street 57"
-        }
-    }
+import axios from 'axios'
 
-]
 
+function loginTest(username,pass){
+    console.log(username,pass)
+    axios({
+        method: 'post',
+        url: LOGIN_URL,
+        data: {
+          username,
+          pass
+        }
+      })
+      .then(console.log)
+      .catch(err => console.log(err))
+}
 var emptyObject =
     {
     "id": 3,
@@ -128,5 +78,75 @@ export default {
     getUserById,
     getUsers,
     login,
-    signup
+    signup,
+    loginTest
 }
+
+
+// var users = [
+//     {
+//         "_id": 0,
+//         "userName": "itsik",
+//         "pass": "123456",
+//         "userDescriptions": "speical user",
+//         "profilePic": 0,
+//         "postIds": [0,1,2,3],
+//         "followersIds": [1,2,3],
+//         "followingIds": [1,2],
+//         "personalDetails": {
+//             "firstName": "Itsik",
+//             "lastName": "Ben Arza",
+//             "email": "itsik@gmail.com",
+//             "address": "bla street 57"
+//         }
+//     },
+//     {
+//         "_id": 1,
+//         "userName": "ori",
+//         "pass": "123456",
+//         "userDescriptions": "ori user",
+//         "profilePic":  'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
+//         "postIds": [0,1,2,3],
+//         "followersIds": [1,2],
+//         "followingIds": [0,2],
+//         "personalDetails": {
+//             "firstName": "Ori",
+//             "lastName": "Lapushner",
+//             "email": "ori@gmail.com",
+//             "address": "bla street 57"
+//         }
+//     },
+//     {
+//         "_id": 2,
+//         "userName": "Ido",
+//         "pass": "123456",
+//         "userDescriptions": "sumbat speical user",
+//         "profilePic": 'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
+//         "postIds": [0,1,2,3],
+//         "followersIds": [0,1,3],
+//         "followingIds": [0,1],
+//         "personalDetails": {
+//             "firstName": "Ido",
+//             "lastName": "Terem",
+//             "email": "ido@gmail.com",
+//             "address": "bla street 57"
+//         }
+//     },
+//     {
+//         "id": 3,
+//         "userName": "Sumbat",
+//         "pass": "123456",
+//         "userDescriptions": "sumbat speical user",
+//         "profilePic":  'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
+//         "postIds": [0,1,2,3],
+//         "followersIds": [1,2],
+//         "followingIds": [1,2],
+//         "personalDetails": {
+//             "firstName": "Sumbat",
+//             "lastName": "Ha Gever",
+//             "email": "itsik@gmail.com",
+//             "address": "bla street 57"
+//         }
+//     }
+
+// ]

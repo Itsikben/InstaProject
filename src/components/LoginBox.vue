@@ -84,10 +84,7 @@ export default {
       }
     },
     login() {
-      this.$store.dispatch("login", {
-        userName: this.userName,
-        pass: this.pass
-      });
+      userService.loginTest(this.userName,this.pass);
     },
     signup() {
       this.$store
