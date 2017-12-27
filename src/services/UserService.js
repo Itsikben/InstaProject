@@ -1,25 +1,31 @@
-var testUser = JSON.parse(`
-{
-    "id": 0,
-    "userName": "itsik",
-    "password": "123456",
-    "userDescriptions": "string",
-    "profilePic": "id of a photo",
-    "postIds": [],
-    "followersIds": [],
-    "followingIds": [],
-    "personalDetails": {
-        "firstName": "Itsik",
-        "lastName": "Ben Arza",
-        "email": "itsik@gmail.com",
-        "address": "bla street 57"
-    }
+const URL = 'http://localhost:3003'
+
+
+var users;
+
+function signup(userDetails) {
+    console.log('signin is active');
+    return axios.post(`${URL}/user`, userDetails)
+    .then(_ => {
+        console.log('userDetails', userDetails);
+        return login(userDetails)
+    })
+    .catch(err => err)
 }
-`)
-var users = [testUser];
+
+// function login(userCreds) {
+//     return axios.post(`${URL}/login`, userCreds)
+//         .then(({ data }) => {
+//             return data
+//         })
+// }
+
+function logout() {
+    return axios.get(`${URL}/logout`)
+}
 
 function getUsers(){
-    return Promise.resolve(users);
+   
 }
 
 function getUserById(userId){

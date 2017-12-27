@@ -13,9 +13,10 @@
 <script>
 "use strict";
 import PreLoggin from "../components/PreLoggin";
-import FollowersList from "../components/followersList";
-import ImgService from "../services/ImgService";
+import FollowersList from "../components/FollowersList";
+import PostService from "../services/PostService";
 import PostsList from "../components/PostsList";
+import { LOAD_POSTS } from "../store/modules/postModule";
 
 export default {
   name: "HomePage",
@@ -25,7 +26,12 @@ export default {
     };
   },
   created() {
-    this.name = this.$store.getters.imageName;
+    console.log(LOAD_POSTS);
+    this.$store.dispatch({
+      type: LOAD_POSTS,
+      postIds: [0,1,3]
+    });
+    // this.name = this.$store.getters.imageName;
   },
   components: {
     PostsList,

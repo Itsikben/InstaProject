@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import PostService from '../services/PostService.js'
 export default {
   name: "PostPreview",
   data() {
@@ -64,6 +65,9 @@ export default {
         'animated zoomOut': !this.likeAnim,
       }
     }
+  },
+  created(){
+    PostService.getPosts([0,1,3]);
   },
   methods:{
     addComment(){

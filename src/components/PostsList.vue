@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>PostsList</h1>
-    <post-preview v-for="n in 20" :key="n"></post-preview>
+    <post-preview v-for="n in 1" :key="n"></post-preview>
   </section>
 </template>
 

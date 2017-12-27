@@ -1,5 +1,6 @@
 import UserService from "../../services/UserService.js";
 
+
 export default {
     state: {
        
@@ -11,7 +12,9 @@ export default {
 
     },
     actions: {
- 
+        login(){
+           
+        }
     }
 }
 

@@ -12,7 +12,8 @@
     "comments": [
         {
             "userId": 1,
-            "text": "string"
+            "text": "string",
+            "createdAt": 3165421
         }
     ]
 }
