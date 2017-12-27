@@ -1,6 +1,6 @@
 <template>
   <div>
-  followers list
+ 
   </div>
 </template>
 

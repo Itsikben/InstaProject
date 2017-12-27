@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>my profile</h1>
+    
     <user-details></user-details>
     <user-gallery></user-gallery>
   </section>

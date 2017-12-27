@@ -7,7 +7,7 @@
         Hero title
       </h1>
       <h2 class="subtitle">
-        Hero subtitle
+        my gallery
       </h2>
     </div>
   </div>

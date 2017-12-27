@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h1>PostsList</h1>
     <post-preview v-for="(n, idx) in 20" :key="idx">
       {{n}}
     </post-preview>

@@ -1,10 +1,9 @@
 
 <template>
 <section>
-  <button @click="logout">temp logout</button>
+
     <div v-if="isLogged">
       
-        <h2>HomePage</h2>
         <followers-list></followers-list>
         <posts-list></posts-list>
     </div>
