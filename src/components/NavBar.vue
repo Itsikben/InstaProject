@@ -35,6 +35,7 @@ export default {
 .log-out{
 font-family: 'Indie Flower', cursive;
 margin-top: 10px;
+font-size: 1.3em
 }
 .left-container{
   width:40%;
