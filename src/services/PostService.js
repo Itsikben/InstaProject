@@ -2,7 +2,7 @@ var posts = [
     {
         userId: 1,
         _id: 0,
-        imgUrl: "img url",
+        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
         createdAt: 47479987,
         postText: "lorm ipsom",
         geoLocation: {
@@ -20,7 +20,7 @@ var posts = [
     {
         userId: 2,
         _id: 1,
-        imgUrl: "img url",
+        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom",
         geoLocation: {
@@ -38,7 +38,7 @@ var posts = [
     {
         userId: 3,
         _id: 2,
-        imgUrl: "img url",
+        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom lorm ipsom",
         geoLocation: {
@@ -64,7 +64,7 @@ var posts = [
     {
         userId: 3,
         _id: 3,
-        imgUrl: "img url",
+        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom lorm ipsom",
         geoLocation: {
@@ -90,7 +90,7 @@ var posts = [
     {
         userId: 4,
         _id: 4,
-        imgUrl: "img url",
+        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom lorm ipsom",
         geoLocation: {
@@ -157,10 +157,26 @@ function getPosts(postIds) {
 
 function deletePost(postId) {
     return new Promise((resolve, reject) => {
-        var postIdx = posts.findIndex(post => post._id  === postId)
+        var postIdx = posts.findIndex(post => post._id === postId)
         posts.splice(postIdx, 1)
-    resolve()
-});
+        resolve()
+    });
+}
+
+function savePost(post) {
+    return new Promise((resolve, reject) => {
+        if (post.id) {
+            var postToUpdateIdx = post.findIndex(currPost => currPost.id === post.id)
+            posts.splice(postToUpdateIdx, 1, post);
+        } else {
+            post.id = _getNextId();
+            posts.push(post);
+        }
+
+        resolve(post);
+        //reject();
+
+    });
 }
 
 
@@ -168,5 +184,6 @@ function deletePost(postId) {
 
 export default {
     getPosts,
-    deletePost
+    deletePost,
+    savePost
 }

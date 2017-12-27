@@ -26,7 +26,7 @@ export default {
     };
   },
   created() {
-    console.log(LOAD_POSTS);
+    console.log('home page LOAD_POSTS', LOAD_POSTS);
     this.$store.dispatch({
       type: LOAD_POSTS,
       postIds: [0,1,3]
