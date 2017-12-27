@@ -66,6 +66,28 @@ var users = [
     }
 
 ]
+
+var emptyObject =
+    {
+    "id": 3,
+    "userName": null,
+    "pass": null,
+    "userDescriptions": null,
+    "profilePic":  null,
+    "postIds":null,
+    "followersIds":null,
+    "followingIds": null,
+    "personalDetails": {
+        "fullName": null,
+        "email": null
+        }
+    };
+
+function randNum() {
+    var val = Math.floor(1000 + Math.random() * 9000);
+    return val
+}
+
 function login(userCreds) {
     return new Promise((resolve,reject) => {
         var u = users.find((u) => {
@@ -74,6 +96,20 @@ function login(userCreds) {
 
         if(u) resolve(u)
     });
+}
+
+function signup(userDitails) {
+    var userToUpdate = emptyObject;
+    userToUpdate.id =  randNum();
+    userToUpdate.userName = userDitails.userName;
+    userToUpdate.pass = userDitails.pass;
+    userToUpdate.personalDetails.fullName = userDitails.fullName;
+
+    return new Promise((resolve,reject)=> {
+        users.push(userToUpdate)
+        resolve(userToUpdate)
+        console.log(userToUpdate)
+    })
 }
 
 function getUsers() {
@@ -91,5 +127,6 @@ function getUserById(userId) {
 export default {
     getUserById,
     getUsers,
-    login
+    login,
+    signup
 }

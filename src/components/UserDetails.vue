@@ -1,17 +1,38 @@
 <template>
   <section v-if="user">
-    <h1>user details</h1>
     <section class="profile-holder">
         <div class="details-place">
-          <p class="title is-3"> {{user.userName}} {{user.personalDetails.lastName}}</p>
-          <p class="subtitle is-5">{{user.userDescriptions}}</p>
+          <p class="title is-3"> {{user.userName}}</p>
+          <p class="subtitle is-5" v-if="user.userDescriptions">{{user.userDescriptions}}  {{user.personalDetails.lastName}}</p>
             <div class="details-wind">
-              <p class="subtitle is-5">following {{user.followingIds.length}}</p>
-              <p class="subtitle is-5">followers {{user.followersIds.length}}</p>
+
+                            <nav class="level">
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">posts uplaud</p>
+                    <p class="title">0</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Following</p>
+                    <p class="title" v-if="user.followingIds">{{user.followingIds.length}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Followers</p>
+                    <p class="title" v-if="user.followersIds">{{user.followersIds.length}}</p>
+                  </div>
+                </div>
+          
+              </nav>
+              
             </div>
-            <a class="button is-primary">edit user</a>
+
         </div>
-      <div class="raund-img"><img :src="user.profilePic"></div>
+      <div class="raund-img" v-if="user.profilePic"><img :src="user.profilePic"></div>
+      <div v-else><img src="http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514319715/noimg_obp9e7.jpg">you need to add photo</div>
     </section>
   </section>
 </template>
@@ -22,10 +43,7 @@ export default {
   name: "UserDetails",
 
   created() {
-    // UserService.getUserById(0).then(u => {
-    //   this.user = u;
-    //   console.log(this.user, u);
-    // });
+  
   },
   computed: {
     user() {
@@ -41,9 +59,14 @@ export default {
   margin: auto;
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  margin-top: 5%;
+
 }
 .raund-img {
   border-radius: 50%;
+  max-width: 50%;
 }
 .details-wind {
   display: flex;

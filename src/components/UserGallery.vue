@@ -1,13 +1,23 @@
 <template>
   <section>
-    <h1>my gallery</h1>
-    
+ <section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Hero title
+      </h1>
+      <h2 class="subtitle">
+        Hero subtitle
+      </h2>
+    </div>
+  </div>
+</section>
      <div class="photos-holder">
     
       <div class="card" v-for="post in postToDisplay" :key="post" >
         <div class="card-image">
           <figure class="image is-4by3">
-            <img :src="photoToDisplay" alt="Placeholder image">
+            <img :src="post" alt="Placeholder image">
           </figure>
         </div>
 
@@ -27,22 +37,18 @@ export default {
   data() {
     return {
       user:null,
-      photoToDisplay:['http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288566/cut1_rdj7zj.jpg'],
       userId:null,
-      postToDisplay:[1,2,3,4,5,6,7,8]
+      postToDisplay:['http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288566/cut1_rdj7zj.jpg','http://res.cloudinary.com/dxdmd1v1z/image/upload/v1512859058/d_oke6pg.jpg']
     };
   },
   created() {
       
   },
   // computed: {
-  //     photoToDisplay() {
-  //         return this.$store.getters.photoToDisplay
+  //   postToDisplay() {
+  //       return this.$store.getters.postToDisplay
   //       },
-  //     isUser() {
-  //           return this.$store.getters.isUser
-  //       },
-  //   },
+  // },
 
 };
 </script>
@@ -53,8 +59,10 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin:auto;
+  border: 1px solid rgb(158, 196, 211);
+  border-radius: 5px; 
 }
 .card {
     max-width: 200px;

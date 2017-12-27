@@ -3,11 +3,14 @@
 <section>
   <button @click="logout">temp logout</button>
     <div v-if="isLogged">
+      
         <h2>HomePage</h2>
         <followers-list></followers-list>
         <posts-list></posts-list>
     </div>
-    <pre-loggin v-else></pre-loggin>
+    <!-- <div class="loggin" v-else> -->
+      <pre-loggin v-else></pre-loggin>
+    
     </section>
 </template>
 
@@ -47,3 +50,4 @@ export default {
   }
 };
 </script>
+

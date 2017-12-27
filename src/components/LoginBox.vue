@@ -1,22 +1,66 @@
 <template>
+<div class="sec-div">
   <section>
-    <h1>Instagram</h1>
+    
     <form v-if="!signUpActive">
-      <input type="text" placeholder="User name/Email" v-model="userName">
-      <input type="password" placeholder="Password" v-model="pass"><br>
+<h5 class="subtitle is-5">Log in</h5>
+      <div class="field">
+        <label class="label">Username</label>
+           <div class="control has-icons-left has-icons-right">
+              <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="userName">
+              <span class="icon is-small is-left">
+              <i class="fa fa-user"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fa fa-check"></i>
+              </span>
+            </div>
+      </div>
+      <div class="field">
+        <label class="label">password</label>
+          <div class="control">
+            <input class="input" type="password" placeholder="Password"  v-model="pass">
+          </div>
+      </div>
       <button @click.prevent="login">Log in</button><br>
+      <p class="subtitle is-5">not signed up yet?<a @click="toggleSignUp"> Sign up</a></p>
       </form>
     <form v-else>
-      <input type="text" placeholder="User name" v-model="userName"><br>
-      <input type="password" placeholder="Password" v-model="pass"><br>
-      <input type="email" placeholder="Email" v-model="userName"><br>
-      <input type="text" placeholder="full name" v-model="pass"><br>
-      <button @click.prevent="login">Log in</button><br>
+      <h5 class="subtitle is-5">Sign up</h5>
+      <div class="field">
+        <label class="label">Username</label>
+           <div class="control has-icons-left has-icons-right">
+              <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="userName">
+              <span class="icon is-small is-left">
+              <i class="fa fa-user"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fa fa-check"></i>
+              </span>
+            </div>
+      </div>
+      <div class="field">
+        <label class="label">Full name</label>
+          <div class="control">
+            <input class="input" type="text"  placeholder="full name"  v-model="fullName">
+          </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" placeholder="Password"  v-model="pass">
+          </div>
+      </div>
+      <!-- <input type="email" placeholder="Email" v-model="userName"><br> -->
+      <button @click.prevent="signup">Sign up</button><br>
+      <p class="subtitle is-5">Already have an account?<a @click="toggleSignUp"> Log in</a></p>
       </form>
-      <button>Forgot password?</button>
-      <p>not signed up yet?<a @click="toggleSignUp"> Sign up</a></p>
+      <!-- <button>Forgot password?</button> -->
+      
+
       <!-- <img src="https://media.istockphoto.com/photos/dog-in-the-city-park-picture-id505823546"> -->
   </section>
+  </div>
 </template>
 
 <script>
@@ -27,7 +71,8 @@ export default {
     return {
       signUpActive: false,
       userName: "",
-      pass: ""
+      pass: "",
+      fullName: ""
     };
   },
   methods: {
@@ -39,7 +84,22 @@ export default {
       }
     },
     login() {
-      this.$store.dispatch("login", {userName: this.userName, pass: this.pass});
+      this.$store.dispatch("login", {
+        userName: this.userName,
+        pass: this.pass
+      });
+    },
+    signup() {
+      this.$store
+        .dispatch("signup", {
+          userName: this.userName,
+          pass: this.pass,
+          fullName: this.fullName
+        })
+        .then(_ => {
+          this.$router.push("/");
+        })
+        .catch(err => console.log(err));
     }
   }
 };
@@ -49,20 +109,22 @@ export default {
 input {
   margin-top: 7px;
 }
-section {
+.sec-div {
   margin: auto;
-  border: 1px solid rgb(115, 142, 153);
+  padding: 5%;
+  border: 1px solid rgb(158, 196, 211);
+  border-radius: 5px;
+  max-width: 400px;
+  background-color: #ffe8ff;
 }
 img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
-section {
-  max-width: 300px;
-}
+
 button {
-  margin: 5px;
+  margin: 5%;
 }
 button {
   font-family: Arial, Helvetica, sans-serif;
@@ -88,5 +150,8 @@ button {
 }
 p a:hover {
   cursor: pointer;
+}
+p {
+  margin: 5%;
 }
 </style>
