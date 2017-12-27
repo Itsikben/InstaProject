@@ -156,6 +156,7 @@ function getPosts(postIds) {
 };
 
 function deletePost(postId) {
+    console.log('triying to delete',postId )
     return new Promise((resolve, reject) => {
         var postIdx = posts.findIndex(post => post._id === postId)
         posts.splice(postIdx, 1)
@@ -179,11 +180,20 @@ function savePost(post) {
     });
 }
 
+function getPostById(postId){
+    return new Promise((resolve, reject) => {
+        var foundPost = post.find(post => post.id === postId)
+        if (foundPost) resolve(foundPost)
+        else reject();
+    })
+}
 
 
 
 export default {
     getPosts,
     deletePost,
-    savePost
+    savePost,
+    getPostById,
+    emptyPost
 }

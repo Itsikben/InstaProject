@@ -20,8 +20,24 @@ export default {
         removePost(state, payload){
             state.posts = state.posts.filter(post => post.id !== payload.id);
         },
+        setCurrentPost(state, post){
+            state.currPost = post
+        }
     },
     actions: {
+        loadPost(store, payload){
+            return PostService.getPostById(payload.id)
+            .then(post => {
+                store.commit('setCurrentPost', post)
+                console.log('post lodeded',post);
+                return post
+            })
+            .catch(err =>{
+                store.commit('setCurrentPost', null);
+                console.log('post did not loded');
+            })
+        },
+
         [LOAD_POSTS]( context , payload){
             console.log({payload, context})
             return PostService.getPosts(payload.postIds)
@@ -56,5 +72,4 @@ export default {
               })
           }
     }
-
 }

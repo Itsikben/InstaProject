@@ -9,7 +9,7 @@
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
       <img src="https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy" alt="">
-      <button @click="deletePost(post._id)">del</button>
+      <button @click="deletePost()">del</button>
     </div>
     <div class="post-statistics">
       <div>
@@ -68,7 +68,7 @@ export default {
     }
   },
   created(){
-   this.$store.dispatch({type: 'loadPosts'});
+   posts = this.$store.dispatch({type: 'loadPosts'});
   },
   methods:{
     addComment(){
@@ -94,7 +94,7 @@ export default {
       this.animateLike();
     },
     deletePost(postId){
-      this.$store.dispatch({type: 'deletePost', id: postId})
+      PostService.deletePost()
     }
   }
 };
