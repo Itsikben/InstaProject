@@ -39,7 +39,10 @@ export default {
       }
     },
     login() {
-      this.$store.dispatch("login", {userName: this.userName, pass: this.pass});
+      this.$store.dispatch("login", {
+        userName: this.userName,
+        pass: this.pass
+      });
     }
   }
 };
@@ -61,10 +64,9 @@ img {
 section {
   max-width: 300px;
 }
+
 button {
   margin: 5px;
-}
-button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #ffe8ff;
@@ -88,5 +90,9 @@ button {
 }
 p a:hover {
   cursor: pointer;
+}
+button:hover{
+cursor: pointer;
+
 }
 </style>

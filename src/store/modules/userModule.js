@@ -2,7 +2,7 @@ import UserService from "../../services/UserService.js";
 
 export default {
     state: {
-        user: null
+        user: null,
         // user: {
         //     "id": 3,
         //     "userName": "Sumbat",
