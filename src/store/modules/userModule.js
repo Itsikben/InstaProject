@@ -34,18 +34,20 @@ export default {
 
     },
     actions: {
-        login({commit},userCreds) {
-            UserService.login(userCreds).then(user => {
-                commit({type: 'setUser',user});
-            })
+        login({commit},userInfo){
+            console.log('commit',commit,'user info:',userInfo)
+            UserService.login(userInfo.username,userInfo.pass)
+            .then(res => commit({type:'setUser',user:res.data.user}))
         },
-        signup({commit},userDitails){
-            UserService.signup(userDitails).then(user => {
+        signup({commit},userDetails){
+            console.log(userDetails)
+            UserService.signup(userDetails).then(user => {
                 commit({type:'setUser',user})
             })
         }
 
     }
 }
+
 
 

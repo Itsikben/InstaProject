@@ -1,12 +1,12 @@
 const USER_URL = 'http://localhost:3003/data/user'
 const LOGIN_URL = 'http://localhost:3003/login'
-
+const SIGNUP_URL = 'http://localhost:3003/signup'
 import axios from 'axios'
 
 
-function loginTest(username,pass){
-    console.log(username,pass)
-    axios({
+function login(username,pass){
+    // console.log(username,pass)
+   return axios({
         method: 'post',
         url: LOGIN_URL,
         data: {
@@ -14,23 +14,16 @@ function loginTest(username,pass){
           pass
         }
       })
-      .then(console.log)
-      .catch(err => console.log(err))
+      .catch(err => console.log('login failed: ',err))
 }
 var emptyObject =
     {
-    "id": 3,
-    "userName": null,
     "pass": null,
-    "userDescriptions": null,
-    "profilePic":  null,
-    "postIds":null,
-    "followersIds":null,
-    "followingIds": null,
-    "personalDetails": {
-        "fullName": null,
-        "email": null
-        }
+    "userDescriptions": '',
+    "profilePic": null,
+    "postIds": [],
+    "followersIds": [],
+    "followingIds": [],
     };
 
 function randNum() {
@@ -38,29 +31,29 @@ function randNum() {
     return val
 }
 
-function login(userCreds) {
-    return new Promise((resolve,reject) => {
-        var u = users.find((u) => {
-            return ((u.userName === userCreds.userName) && (u.pass === userCreds.pass));
-        });
+// function login(userCreds) {
+//     return new Promise((resolve,reject) => {
+//         var u = users.find((u) => {
+//             return ((u.userName === userCreds.userName) && (u.pass === userCreds.pass));
+//         });
 
-        if(u) resolve(u)
-    });
-}
+//         if(u) resolve(u)
+//     });
+// }
 
-function signup(userDitails) {
+function signup(userDetails) {
     var userToUpdate = emptyObject;
-    userToUpdate.id =  randNum();
-    userToUpdate.userName = userDitails.userName;
-    userToUpdate.pass = userDitails.pass;
-    userToUpdate.personalDetails.fullName = userDitails.fullName;
+    userToUpdate.username = userDetails.username;
+    userToUpdate.pass = userDetails.pass;
+    userToUpdate.fullName = userDetails.fullName;
 
-    return new Promise((resolve,reject)=> {
-        users.push(userToUpdate)
-        resolve(userToUpdate)
-        console.log(userToUpdate)
+    return axios({
+        method: 'post',
+        url: SIGNUP_URL,
+        data: userToUpdate
     })
 }
+
 
 function getUsers() {
     return Promise.resolve(users);
@@ -79,7 +72,6 @@ export default {
     getUsers,
     login,
     signup,
-    loginTest
 }
 
 
