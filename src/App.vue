@@ -1,23 +1,29 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
-    <router-view/>
+    <div class="space-container">
+
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
-import navBar from './components/NavBar.vue'
+import navBar from "./components/NavBar.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
     navBar
   }
-}
+};
 </script>
 
 <style>
+.space-container{
+  padding-top:50px;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -16,39 +16,39 @@ export default {
   data() {
     return {};
   },
-  computed:{
+  computed: {
     userName() {
-      var user = this.$store.state.user.user
-      if(user === null) return 'Guest'
-      return user.userName
+      var user = this.$store.state.user.user;
+      if (user === null) return "Guest";
+      return user.userName;
     }
   },
-  methods:{
-        logout(){
-      this.$store.commit('setUser',{user: null})
+  methods: {
+    logout() {
+      this.$store.commit("setUser", { user: null });
     }
   }
 };
 </script>
 
 <style scoped>
-.log-out{
-font-family: 'Indie Flower', cursive;
-margin-top: 10px;
-font-size: 1.3em
+.log-out {
+  font-family: "Indie Flower", cursive;
+  margin-top: 10px;
+  font-size: 1.3em;
 }
-.left-container{
-  width:40%;
+.left-container {
+  width: 40%;
   justify-content: space-between;
   display: flex;
   position: absolute;
-  right:15%;
-  top:3px;
+  right: 15%;
+  top: 3px;
 }
-span{
-  font-family: 'Indie Flower', cursive;
-  right:8%;
-  top:3px;
+span {
+  font-family: "Indie Flower", cursive;
+  right: 8%;
+  top: 3px;
 }
 img {
   width: 40px;
@@ -56,18 +56,17 @@ img {
   right: 15%;
 }
 nav {
-  /* display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center; */
   margin: 0;
-  padding: 10px;
   height: 50px;
+  background: rgb(221, 211, 211);  
   border-bottom: 1px solid #e6e6e6;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
 }
 .nav-txt {
-  position: fixed;
-  left: 15%;
+  position: relative;
+  right: 22%;
   top: 5px;
   align-self: flex-end;
   font-family: "Pacifico", cursive;
