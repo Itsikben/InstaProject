@@ -4,7 +4,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Hero title
+         my gallery
       </h1>
       <h2 class="subtitle">
         my gallery
@@ -14,15 +14,15 @@
 </section>
      <div class="photos-holder">
     
-      <div class="card" v-for="post in postToDisplay" :key="post" >
+      <div class="card" v-for="story in storyToDisplay" :key="story" >
         <div class="card-image">
           <figure class="image is-4by3">
-            <img :src="post" alt="Placeholder image">
+            <img :src="story.imgUrl" alt="Placeholder image">
           </figure>
         </div>
 
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          {{storyToDisplay.postText}}
           <br>
         </div>
       </div>
@@ -38,17 +38,17 @@ export default {
     return {
       user:null,
       userId:null,
-      postToDisplay:['http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288566/cut1_rdj7zj.jpg','http://res.cloudinary.com/dxdmd1v1z/image/upload/v1512859058/d_oke6pg.jpg']
+      storyToDisplay:['http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288566/cut1_rdj7zj.jpg','http://res.cloudinary.com/dxdmd1v1z/image/upload/v1512859058/d_oke6pg.jpg']
     };
   },
   created() {
       
   },
-  // computed: {
-  //   postToDisplay() {
-  //       return this.$store.getters.postToDisplay
-  //       },
-  // },
+  computed: {
+    storyToDisplay() {
+        return this.$store.getters.storyToDisplay
+        },
+  },
 
 };
 </script>
