@@ -7,7 +7,7 @@
       <div class="field">
         <label class="label">Username</label>
            <div class="control has-icons-left has-icons-right">
-              <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="userName">
+              <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="username">
               <span class="icon is-small is-left">
               <i class="fa fa-user"></i>
               </span>
@@ -30,7 +30,7 @@
       <div class="field">
         <label class="label">Username</label>
            <div class="control has-icons-left has-icons-right">
-              <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="userName">
+              <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="username">
               <span class="icon is-small is-left">
               <i class="fa fa-user"></i>
               </span>
@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       signUpActive: false,
-      userName: "",
+      username: "",
       pass: "",
       fullName: ""
     };
@@ -84,15 +84,15 @@ export default {
       }
     },
     login() {
-      this.$store.dispatch("login", {
-        userName: this.userName,
+      this.$store.dispatch('login', {
+        username: this.username,
         pass: this.pass
-      });
+      })
     },
     signup() {
       this.$store
         .dispatch("signup", {
-          userName: this.userName,
+          username: this.username,
           pass: this.pass,
           fullName: this.fullName
         })
