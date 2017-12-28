@@ -1,3 +1,4 @@
+const URL = 'http://localhost:3003'
 
 var users = [
     {
@@ -114,20 +115,19 @@ function signup(userDitails) {
 
 function getUsers() {
     return Promise.resolve(users);
-const URL = 'http://localhost:3003'
-
-
-var users;
-
-function signup(userDetails) {
-    console.log('signin is active');
-    return axios.post(`${URL}/user`, userDetails)
-    .then(_ => {
-        console.log('userDetails', userDetails);
-        return login(userDetails)
-    })
-    .catch(err => err)
 }
+
+
+
+// function signup(userDetails) {
+//     console.log('signin is active');
+//     return axios.post(`${URL}/user`, userDetails)
+//     .then(_ => {
+//         console.log('userDetails', userDetails);
+//         return login(userDetails)
+//     })
+//     .catch(err => err)
+// }
 
 // function login(userCreds) {
 //     return axios.post(`${URL}/login`, userCreds)
@@ -136,9 +136,9 @@ function signup(userDetails) {
 //         })
 // }
 
-function logout() {
-    return axios.get(`${URL}/logout`)
-}
+// function logout() {
+//     return axios.get(`${URL}/logout`)
+// }
 
 function getUsers(){
    
