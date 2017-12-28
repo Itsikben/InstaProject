@@ -4,7 +4,7 @@
       <!-- <router-link to="/DesignImg">DesignImg</router-link> -->
       <div class="left-container">
       <router-link to="/UserProfile"><img src = "../imgs/profile.png"></router-link>
-      <span>Hello, <br>{{userName}}</span>
+      <span>Hello, <br>{{username}}</span>
       <a class="log-out" @click="logout">Log out</a>
         </div>
   </nav>
@@ -17,10 +17,10 @@ export default {
     return {};
   },
   computed: {
-    userName() {
+    username() {
       var user = this.$store.state.user.user;
       if (user === null) return "Guest";
-      return user.userName;
+      return user.username;
     }
   },
   methods: {
