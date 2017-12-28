@@ -3,7 +3,7 @@
     <section class="profile-holder">
         <div class="details-place">
           <p class="title is-3"> {{user.userName}}</p>
-          <p class="subtitle is-5" v-if="user.userDescriptions">{{user.userDescriptions}}  {{user.personalDetails.lastName}}</p>
+          <p class="subtitle is-5" v-if="user.userDescriptions">{{user.about}}  {{user.fullName}}</p>
             <div class="details-wind">
 
                             <nav class="level">

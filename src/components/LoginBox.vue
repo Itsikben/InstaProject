@@ -56,7 +56,7 @@
       <p class="subtitle is-5">Already have an account?<a @click="toggleSignUp"> Log in</a></p>
       </form>
       <!-- <button>Forgot password?</button> -->
-      
+       <button @click.prevent="guestEnters">enter as guest</button><br>
 
       <!-- <img src="https://media.istockphoto.com/photos/dog-in-the-city-park-picture-id505823546"> -->
   </section>
@@ -100,6 +100,9 @@ export default {
           this.$router.push("/");
         })
         .catch(err => console.log(err));
+    },
+    guestEnters() {
+      this.$store.dispatch("guestEnters")
     }
   }
 };

@@ -2,6 +2,7 @@
   <section>
     
     <user-details></user-details>
+    <add-photo></add-photo>
     <user-gallery></user-gallery>
   </section>
 </template>
@@ -10,6 +11,7 @@
 import UserService from "../services/UserService";
 import UserDetails from "../components/UserDetails";
 import UserGallery from "../components/UserGallery";
+import AddPhoto from "../components/AddPhoto";
 export default {
   name: "myProfile",
   data() {
@@ -22,7 +24,8 @@ export default {
   },
   components: {
     UserDetails,
-    UserGallery
+    UserGallery,
+    AddPhoto
   }
 };
 </script>

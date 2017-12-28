@@ -3,7 +3,7 @@
 <section>
 
     <div v-if="isLogged">
-      
+       <add-photo></add-photo>
         <followers-list></followers-list>
         <posts-list></posts-list>
     </div>
@@ -20,6 +20,7 @@ import FollowersList from "../components/FollowersList";
 import PostService from "../services/PostService";
 import PostsList from "../components/PostsList";
 import { LOAD_POSTS } from "../store/modules/postModule";
+import AddPhoto from "../components/AddPhoto";
 
 export default {
   name: "HomePage",
@@ -46,7 +47,8 @@ export default {
   components: {
     PostsList,
     FollowersList,
-    PreLoggin
+    PreLoggin,
+    AddPhoto
   }
 };
 </script>

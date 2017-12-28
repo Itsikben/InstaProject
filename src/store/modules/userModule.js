@@ -4,21 +4,16 @@ import UserService from "../../services/UserService.js";
 export default {
     state: {
         user: null,
-        // user: {
+        // guestUser: {
         //     "id": 3,
-        //     "userName": "Sumbat",
+        //     "userName": "guest",
         //     "pass": "123456",
-        //     "userDescriptions": "sumbat speical user",
+        //     "userDescriptions": "guest speical user",
         //     "profilePic": 3,
         //     "postIds": [0, 1, 2, 3],
         //     "followersIds": [1, 2],
         //     "followingIds": [1, 2],
-        //     "personalDetails": {
-        //         "firstName": "Sumbat",
-        //         "lastName": "Ha Gever",
-        //         "email": "sumbat@gmail.com",
-        //         "address": "bla street 57"
-        //     }
+        //     "fullName":"guest"
         // }
     },
     getters: {
@@ -30,6 +25,9 @@ export default {
     },
     mutations: {
         setUser(state, {user}) {
+            state.user = user
+        },
+        setGuestUser(state, {user}) {
             state.user = user
         }
 
@@ -44,8 +42,7 @@ export default {
             UserService.signup(userDitails).then(user => {
                 commit({type:'setUser',user})
             })
-        }
-
+        },
     }
 }
 
