@@ -1,5 +1,6 @@
 import UserService from "../../services/UserService.js";
 
+
 export default {
     state: {
         user: null,
@@ -34,6 +35,7 @@ export default {
 
     },
     actions: {
+<<<<<<< HEAD
         login({commit},userCreds) {
             UserService.login(userCreds).then(user => {
                 commit({type: 'setUser',user});
@@ -45,6 +47,11 @@ export default {
             })
         }
 
+=======
+        login(){
+           
+        }
+>>>>>>> origin/service
     }
 }
 

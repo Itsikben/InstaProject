@@ -9,6 +9,7 @@
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
       <img src="https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy" alt="">
+      <button @click="deletePost()">del</button>
     </div>
     <div class="post-statistics">
       <div>
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+import PostService from '../services/PostService.js'
 export default {
   name: "PostPreview",
   data() {
@@ -65,6 +67,9 @@ export default {
       }
     }
   },
+  created(){
+  this.$store.dispatch({type: 'loadPosts'});
+  },
   methods:{
     addComment(){
       this.comments.push(this.tempComment);
@@ -87,6 +92,9 @@ export default {
     like(){
       this.isLiked = true;
       this.animateLike();
+    },
+    deletePost(postId){
+      PostService.deletePost()
     }
   }
 };
