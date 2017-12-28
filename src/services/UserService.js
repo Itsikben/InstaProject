@@ -4,65 +4,45 @@ var users = [
         "_id": 0,
         "userName": "itsik",
         "pass": "123456",
-        "userDescriptions": "speical user",
+        "about": "speical user",
         "profilePic": 0,
         "postIds": [0,1,2,3],
         "followersIds": [1,2,3],
         "followingIds": [1,2],
-        "personalDetails": {
-            "firstName": "Itsik",
-            "lastName": "Ben Arza",
-            "email": "itsik@gmail.com",
-            "address": "bla street 57"
-        }
+        "fullName": "Itsik Ben Arza", 
     },
     {
         "_id": 1,
         "userName": "ori",
         "pass": "123456",
-        "userDescriptions": "ori user",
+        "about": "ori user",
         "profilePic":  'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
         "postIds": [0,1,2,3],
         "followersIds": [1,2],
         "followingIds": [0,2],
-        "personalDetails": {
-            "firstName": "Ori",
-            "lastName": "Lapushner",
-            "email": "ori@gmail.com",
-            "address": "bla street 57"
-        }
+        "fullName":"Ori Lapushner",
     },
     {
         "_id": 2,
         "userName": "Ido",
         "pass": "123456",
-        "userDescriptions": "sumbat speical user",
+        "about": "sumbat speical user",
         "profilePic": 'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
         "postIds": [0,1,2,3],
         "followersIds": [0,1,3],
         "followingIds": [0,1],
-        "personalDetails": {
-            "firstName": "Ido",
-            "lastName": "Terem",
-            "email": "ido@gmail.com",
-            "address": "bla street 57"
-        }
+        "fullName":"ido"
     },
     {
         "id": 3,
         "userName": "Sumbat",
         "pass": "123456",
-        "userDescriptions": "sumbat speical user",
+        "about": "sumbat speical user",
         "profilePic":  'http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288579/cut2_s623c9.jpg',
         "postIds": [0,1,2,3],
         "followersIds": [1,2],
         "followingIds": [1,2],
-        "personalDetails": {
-            "firstName": "Sumbat",
-            "lastName": "Ha Gever",
-            "email": "itsik@gmail.com",
-            "address": "bla street 57"
-        }
+        "fullName":"sumbat"
     }
 
 ]
@@ -72,15 +52,13 @@ var emptyObject =
     "id": 3,
     "userName": null,
     "pass": null,
-    "userDescriptions": null,
-    "profilePic":  null,
-    "postIds":null,
-    "followersIds":null,
-    "followingIds": null,
-    "personalDetails": {
-        "fullName": null,
-        "email": null
-        }
+    "about":"",
+    "profilePic":  "",
+    "postIds":[],
+    "followersIds":[],
+    "followingIds": [],
+    "fullName":null,
+       
     };
 
 function randNum() {
@@ -103,7 +81,7 @@ function signup(userDitails) {
     userToUpdate.id =  randNum();
     userToUpdate.userName = userDitails.userName;
     userToUpdate.pass = userDitails.pass;
-    userToUpdate.personalDetails.fullName = userDitails.fullName;
+    userToUpdate.fullName = userDitails.fullName;
 
     return new Promise((resolve,reject)=> {
         users.push(userToUpdate)

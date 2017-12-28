@@ -64,6 +64,7 @@ nav {
   padding: 10px;
   height: 50px;
   border-bottom: 1px solid #e6e6e6;
+ 
 }
 .nav-txt {
   position: fixed;

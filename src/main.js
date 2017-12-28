@@ -7,7 +7,7 @@ import Vuex from 'vuex'
 import App from './App'
 import router from './router/index.js'
 import myStore from './store/store.js'
-
+import cloudinary from 'cloudinary-core'
 Vue.config.productionTip = false
 //Vue.use(Vuex)
 
