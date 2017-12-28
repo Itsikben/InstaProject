@@ -17,7 +17,7 @@
 "use strict";
 import PreLoggin from "../components/PreLoggin";
 import FollowersList from "../components/FollowersList";
-import PostService from "../services/PostService";
+import PostService from "../services/PostService.js";
 import PostsList from "../components/PostsList";
 import { LOAD_POSTS } from "../store/modules/postModule";
 
