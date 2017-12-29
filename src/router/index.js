@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import UserProfile from '../pages/UserProfile'
 import DesignImg from '../pages/DesignImg'
 import HomePage from '../pages/HomePage'
+import NewStory from '../pages/NewStory'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/DesignImg',
       name: 'DesignImg',
       component: DesignImg
+    },
+    {
+      path: '/NewStory',
+      name: 'NewStory',
+      component: NewStory
     },
   ]
 })
