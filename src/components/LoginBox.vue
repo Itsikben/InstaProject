@@ -97,6 +97,7 @@ export default {
           fullName: this.fullName
         })
         .then(_ => {
+          console.log('open')
           this.$router.push("/");
         })
         .catch(err => console.log(err));

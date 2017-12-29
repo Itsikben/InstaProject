@@ -2,10 +2,10 @@
   <section>
 
     <div class="add-img">
-   <a href="#" id="upload_widget_opener" @click="add">add photo</a>
+   <!-- <a href="#" id="upload_widget_opener" @click="add">add photo</a> -->
     <div class="control">
-    <input class="input" type="text" placeholder="add coment" v-bind="newPost.comment">
-    <img :src="newPost.uploadedPhoto">
+    <input class="input" type="text" placeholder="add coment" v-model="comment">
+    <img :src="uploadedPhoto">
     <a class="button is-dark" @click="sendPost">post!</a>
   </div>
   
@@ -17,34 +17,33 @@
 
 // var cl = new cloudinary.Cloudinary({cloud_name: "demo", secure: true});
 import UserService from "../services/UserService";
+import { SAVE_POST }  from '../store/modules/postModule'
 export default {
   name: "AddPhoto",
   data() {
     return {
-      newPost: {
         uploadedPhoto:'',
         comment:''
-      }
-      
-      
+
     }
   },
   computed: {
-    //  photoUrl() {
-    //   // console.log(this.uploadedPhoto)
-    //   return this.uploadedPhoto
-    //  }
+    userId() {
+      return this.$store.state.user.user._id
+    },
+
   },
   methods: {
-      add(){  
-      cloudinary.openUploadWidget({ cloud_name: 'dxdmd1v1z', upload_preset: 'xy7rt9uw'}, 
-      (error, result) => { 
-        console.log( result[0].secure_url)
-        this.uploadedPhoto = result[0].secure_url;
-        });
-      },
+      // add(){  
+      // cloudinary.openUploadWidget({ cloud_name: 'dxdmd1v1z', upload_preset: 'xy7rt9uw'}, 
+      // (error, result) => { 
+      //   console.log( result[0].secure_url)
+      //   this.uploadedPhoto = result[0].secure_url;
+      //   });
+      // },
       sendPost() {
-        this.$store.dispatch("addPost", { newPost});
+        this.$store.dispatch(SAVE_POST, {comment: this.comment, user: this.userId});
+        
       }
 
     }
@@ -60,3 +59,4 @@ export default {
   border:solid cadetblue; 
 }
 </style>
+

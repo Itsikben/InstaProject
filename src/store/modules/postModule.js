@@ -63,7 +63,8 @@ export default {
               })
           },
           [SAVE_POST](store, payload) {
-            return PostService.savePost(payload.post)
+              console.log(payload)
+            return PostService.savePost(payload.comment,payload.user)
               .then(savedPost => {
                 store.commit({type: 'setCurrentPost', post : savedPost});
               })

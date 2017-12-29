@@ -14,15 +14,15 @@
 </section>
      <div class="photos-holder">
     
-      <div class="card" v-for="story in storyToDisplay" :key="story" >
+      <div class="card" v-for="post in postToDisplay" :key="post" >
         <div class="card-image">
           <figure class="image is-4by3">
-            <img :src="story.imgUrl" alt="Placeholder image">
+            <img :src="post.imgUrl" alt="Placeholder image">
           </figure>
         </div>
 
         <div class="content">
-          {{storyToDisplay.postText}}
+          {{postToDisplay.postText}}
           <br>
         </div>
       </div>
@@ -38,17 +38,17 @@ export default {
     return {
       user:null,
       userId:null,
-      storyToDisplay:['http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288566/cut1_rdj7zj.jpg','http://res.cloudinary.com/dxdmd1v1z/image/upload/v1512859058/d_oke6pg.jpg']
+      postToDisplay:['http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288566/cut1_rdj7zj.jpg','http://res.cloudinary.com/dxdmd1v1z/image/upload/v1512859058/d_oke6pg.jpg']
     };
   },
   created() {
       
   },
-  computed: {
-    storyToDisplay() {
-        return this.$store.getters.storyToDisplay
-        },
-  },
+  // computed: {
+  //   postToDisplay() {
+  //       return this.$store.getters.postToDisplay
+  //       },
+  // },
 
 };
 </script>

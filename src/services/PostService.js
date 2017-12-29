@@ -1,119 +1,124 @@
-var posts = [
-    {
-        userId: 1,
-        _id: 0,
-        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
-        createdAt: 47479987,
-        postText: "lorm ipsom",
-        geoLocation: {
-            lat: "x",
-            long: "Y"
-        },
-        likes: [],
-        comments: [
-            {
-                userId: 1,
-                text: "string"
-            }
-        ]
-    },
-    {
-        userId: 2,
-        _id: 1,
-        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
-        createdAt: 47479987,
-        postText: "lorm ipsom lorm ipsom",
-        geoLocation: {
-            lat: "x",
-            long: "Y"
-        },
-        likes: [1],
-        comments: [
-            {
-                userId: 1,
-                text: "string"
-            }
-        ]
-    },
-    {
-        userId: 3,
-        _id: 2,
-        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
-        createdAt: 47479987,
-        postText: "lorm ipsom lorm ipsom lorm ipsom",
-        geoLocation: {
-            lat: "x",
-            long: "Y"
-        },
-        likes: [1, 12],
-        comments: [
-            {
-                userId: 1,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            },
-            {
-                userId: 2,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            },
-            {
-                userId: 3,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            }
-        ]
-    },
-    {
-        userId: 3,
-        _id: 3,
-        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
-        createdAt: 47479987,
-        postText: "lorm ipsom lorm ipsom lorm ipsom",
-        geoLocation: {
-            lat: "x",
-            long: "Y"
-        },
-        likes: [1, 12],
-        comments: [
-            {
-                userId: 1,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            },
-            {
-                userId: 2,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            },
-            {
-                userId: 3,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            }
-        ]
-    },
-    {
-        userId: 4,
-        _id: 4,
-        imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
-        createdAt: 47479987,
-        postText: "lorm ipsom lorm ipsom lorm ipsom",
-        geoLocation: {
-            lat: "x",
-            long: "Y"
-        },
-        likes: ['1', '12'],
-        comments: [
-            {
-                userId: 1,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            },
-            {
-                userId: 2,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            },
-            {
-                userId: 3,
-                text: "lorm ipsom lorm ipsom lorm ipsom"
-            }
-        ]
-    }
-];
+const ADD_URL = 'http://localhost:3003/addStory'
+import axios from 'axios'
+
+
+
+// var posts = [
+//     {
+//         userId: 1,
+//         _id: 0,
+//         imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
+//         createdAt: 47479987,
+//         postText: "lorm ipsom",
+//         geoLocation: {
+//             lat: "x",
+//             long: "Y"
+//         },
+//         likes: [],
+//         comments: [
+//             {
+//                 userId: 1,
+//                 text: "string"
+//             }
+//         ]
+//     },
+//     {
+//         userId: 2,
+//         _id: 1,
+//         imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
+//         createdAt: 47479987,
+//         postText: "lorm ipsom lorm ipsom",
+//         geoLocation: {
+//             lat: "x",
+//             long: "Y"
+//         },
+//         likes: [1],
+//         comments: [
+//             {
+//                 userId: 1,
+//                 text: "string"
+//             }
+//         ]
+//     },
+//     {
+//         userId: 3,
+//         _id: 2,
+//         imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
+//         createdAt: 47479987,
+//         postText: "lorm ipsom lorm ipsom lorm ipsom",
+//         geoLocation: {
+//             lat: "x",
+//             long: "Y"
+//         },
+//         likes: [1, 12],
+//         comments: [
+//             {
+//                 userId: 1,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             },
+//             {
+//                 userId: 2,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             },
+//             {
+//                 userId: 3,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             }
+//         ]
+//     },
+//     {
+//         userId: 3,
+//         _id: 3,
+//         imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
+//         createdAt: 47479987,
+//         postText: "lorm ipsom lorm ipsom lorm ipsom",
+//         geoLocation: {
+//             lat: "x",
+//             long: "Y"
+//         },
+//         likes: [1, 12],
+//         comments: [
+//             {
+//                 userId: 1,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             },
+//             {
+//                 userId: 2,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             },
+//             {
+//                 userId: 3,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             }
+//         ]
+//     },
+//     {
+//         userId: 4,
+//         _id: 4,
+//         imgUrl: "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
+//         createdAt: 47479987,
+//         postText: "lorm ipsom lorm ipsom lorm ipsom",
+//         geoLocation: {
+//             lat: "x",
+//             long: "Y"
+//         },
+//         likes: ['1', '12'],
+//         comments: [
+//             {
+//                 userId: 1,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             },
+//             {
+//                 userId: 2,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             },
+//             {
+//                 userId: 3,
+//                 text: "lorm ipsom lorm ipsom lorm ipsom"
+//             }
+//         ]
+//     }
+// ];
 
 // fn returns an empty post
 function emptyPost(params) {
@@ -164,20 +169,16 @@ function deletePost(postId) {
     });
 }
 
-function savePost(post) {
-    return new Promise((resolve, reject) => {
-        if (post.id) {
-            var postToUpdateIdx = post.findIndex(currPost => currPost.id === post.id)
-            posts.splice(postToUpdateIdx, 1, post);
-        } else {
-            post.id = _getNextId();
-            posts.push(post);
+function savePost(post,userId ) {
+    
+    return axios({
+        method: 'post',
+        url: ADD_URL,
+        data: {
+          post,
+          userId  
         }
-
-        resolve(post);
-        //reject();
-
-    });
+      })
 }
 
 function getPostById(postId){
