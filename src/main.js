@@ -5,7 +5,8 @@ import Vuex from 'vuex'
 import App from './App'
 import router from './router/index.js'
 import myStore from './store/store.js'
-
+import { VueHammer } from 'vue2-hammer'
+Vue.use(VueHammer)
 Vue.config.productionTip = false
 //Vue.use(Vuex)
 
