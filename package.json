@@ -10,10 +10,15 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "bulma": "^0.6.1",
     "axios": "^0.17.1",
+    "blueimp-file-upload": "^9.19.2",
+    "bulma": "^0.6.1",
+    "cloudinary-core": "^2.4.0",
+    "cloudinary-jquery-file-upload": "^2.4.0",
+    "jquery": "^3.2.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-socket.io": "^2.1.1-a",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

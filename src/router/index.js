@@ -15,7 +15,7 @@ export default new Router({
       component: HomePage
     },
     {
-      path: '/UserProfile',
+      path: '/UserProfile/:userId',
       name: 'UserProfile',
       component: UserProfile
     },

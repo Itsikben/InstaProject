@@ -4,7 +4,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Hero title
+         my gallery
       </h1>
       <h2 class="subtitle">
         my gallery
@@ -13,16 +13,16 @@
   </div>
 </section>
      <div class="photos-holder">
-    
+    <button @click="getPosts">get posts</button>
       <div class="card" v-for="post in postToDisplay" :key="post" >
         <div class="card-image">
           <figure class="image is-4by3">
-            <img :src="post" alt="Placeholder image">
+            <img :src="post.imgUrl" alt="Placeholder image">
           </figure>
         </div>
 
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          {{postToDisplay.postText}}
           <br>
         </div>
       </div>
@@ -31,24 +31,36 @@
 </template>
 
 <script>
-
+import { LOAD_POSTS }  from '../store/modules/postModule'
+import postService from '../services/PostService'
 export default {
   name: "UserGallery",
   data() {
     return {
       user:null,
       userId:null,
-      postToDisplay:['http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514288566/cut1_rdj7zj.jpg','http://res.cloudinary.com/dxdmd1v1z/image/upload/v1512859058/d_oke6pg.jpg']
+      postToDisplay:[]
     };
   },
   created() {
-      
-  },
-  // computed: {
-  //   postToDisplay() {
-  //       return this.$store.getters.postToDisplay
-  //       },
-  // },
+        var userId = this.$route.params.userId
+        postService.getPostByUserId(userId)
+         .then(posts => this.postToDisplay = posts)
+         .catch(err => {
+             this.$router.push('/')
+         })
+    },
+    // computed: {
+    //   postToDisplay() {
+    //       return this.$store.actions.postToDisplay
+    //       },
+    // },
+    methods:{
+      getPosts() {
+        this.$store.dispatch(LOAD_POSTS)
+      }
+    }
+
 
 };
 </script>

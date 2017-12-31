@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
+    
     <div class="space-container">
 
       <router-view/>
@@ -9,12 +10,13 @@
 </template>
 
 <script>
+import postService from './services/PostService'
 import navBar from "./components/NavBar.vue";
 export default {
   name: "app",
   components: {
     navBar
-  }
+  },
 };
 </script>
 

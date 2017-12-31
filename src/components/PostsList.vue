@@ -1,22 +1,30 @@
 <template>
   <section>
-    <post-preview v-for="(n, idx) in 20" :key="idx">
-      {{n}}
+    <post-preview v-for="(story, idx) in feed" :key="idx" :story="story">
     </post-preview>
+    {{feed[0]}}
   </section>
 </template>
 
 <script>
-import PostPreview from './PostPreview'
+import PostPreview from "./PostPreview";
 export default {
   name: "PostsList",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+
     };
   },
-  components:{
-      PostPreview,
+  created(){ 
+      this.$socket.emit('feedReq', 'will be user id soon')
+  },
+  components: {
+    PostPreview
+  },
+  computed:{
+    feed(){
+      return this.$store.state.post.feed
+    }
   }
 };
 </script>

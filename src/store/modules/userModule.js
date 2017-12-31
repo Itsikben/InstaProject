@@ -1,24 +1,20 @@
 import UserService from "../../services/UserService.js";
+import PostService from "../../services/PostService";
 
 
 export default {
     state: {
         user: null,
-        // user: {
+        // guestUser: {
         //     "id": 3,
-        //     "userName": "Sumbat",
+        //     "userName": "guest",
         //     "pass": "123456",
-        //     "userDescriptions": "sumbat speical user",
+        //     "userDescriptions": "guest speical user",
         //     "profilePic": 3,
         //     "postIds": [0, 1, 2, 3],
         //     "followersIds": [1, 2],
         //     "followingIds": [1, 2],
-        //     "personalDetails": {
-        //         "firstName": "Sumbat",
-        //         "lastName": "Ha Gever",
-        //         "email": "sumbat@gmail.com",
-        //         "address": "bla street 57"
-        //     }
+        //     "fullName":"guest"
         // }
     },
     getters: {
@@ -31,22 +27,27 @@ export default {
     mutations: {
         setUser(state, {user}) {
             state.user = user
+        },
+        setGuestUser(state, {user}) {
+            state.user = user
         }
 
     },
     actions: {
-        login({commit},userCreds) {
-            UserService.login(userCreds).then(user => {
-                commit({type: 'setUser',user});
-            })
+        login({commit},userInfo){
+            console.log('commit',commit,'user info:',userInfo)
+            UserService.login(userInfo.username,userInfo.pass)
+            .then(res => commit({type:'setUser',user:res.data.user}))
+            
         },
-        signup({commit},userDitails){
-            UserService.signup(userDitails).then(user => {
+        signup({commit},userDetails){
+            console.log(userDetails)
+            UserService.signup(userDetails).then(user => {
                 commit({type:'setUser',user})
             })
-        }
-
+        },
     }
 }
+
 
 
