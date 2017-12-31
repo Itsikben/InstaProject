@@ -1,6 +1,6 @@
 <template>
   <section>
-    <post-preview v-for="(n, idx) in 20" :key="idx">
+    <post-preview v-for="(n, idx) in 1" :key="idx">
       {{n}}
     </post-preview>
   </section>
