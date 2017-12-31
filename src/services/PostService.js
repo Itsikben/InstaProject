@@ -1,4 +1,6 @@
 const ADD_URL = 'http://localhost:3003/addStory'
+const GET_URL = 'http://localhost:3003/getStory'
+const GET_STORYS = 'http://localhost:3003/data/story'
 import axios from 'axios'
 
 
@@ -188,6 +190,16 @@ function getPostById(postId){
         else reject();
     })
 }
+ function getPostByUserId(userId){
+        return axios
+                .get(`${GET_STORYS}/${userId}`)
+                .then(res => console.log(res.data))
+                .catch(e => {
+                    console.log('No posts', e);
+                    throw e;
+                });
+    
+ }
 
 
 
@@ -196,5 +208,6 @@ export default {
     deletePost,
     savePost,
     getPostById,
-    emptyPost
+    emptyPost,
+    getPostByUserId
 }

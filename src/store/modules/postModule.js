@@ -26,7 +26,7 @@ export default {
     },
     actions: {
         loadPost(store, payload){
-            return PostService.getPostById(payload.id)
+            return PostService.getPostByUserId(payload.id)
             .then(post => {
                 store.commit('setCurrentPost', post)
                 console.log('post lodeded',post);

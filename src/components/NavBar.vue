@@ -3,7 +3,7 @@
       <router-link to="/" class="nav-txt">Instagram</router-link>
       <!-- <router-link to="/DesignImg">DesignImg</router-link> -->
       <div class="left-container">
-      <router-link to="/UserProfile"><img src = "../imgs/profile.png"></router-link>
+      <router-link :to="{path: '/UserProfile/' + userId}"><img src = "../imgs/profile.png"></router-link>
       <span>Hello, <br>{{username}}</span>
       <a class="log-out" @click="logout">Log out</a>
         </div>
@@ -13,14 +13,14 @@
 <script>
 export default {
   name: "NavBar",
-  data() {
-    return {};
-  },
   computed: {
     username() {
       var user = this.$store.state.user.user;
       if (user === null) return "Guest";
       return user.username;
+    },
+    userId() {
+     return "5a451f41798f9438a4172044";
     }
   },
   methods: {
