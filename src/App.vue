@@ -9,12 +9,13 @@
 </template>
 
 <script>
+import postService from './services/PostService'
 import navBar from "./components/NavBar.vue";
 export default {
   name: "app",
   components: {
     navBar
-  }
+  },
 };
 </script>
 

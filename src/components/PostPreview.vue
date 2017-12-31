@@ -8,7 +8,7 @@
     </div>
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
-      <img src="https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy" alt="">
+      <img :src="story.imgUrl">
       <button @click="deletePost()">del</button>
     </div>
     <div class="post-statistics">
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="post-createdtime">
-      45 MINUTES AGO
+      created at: {{story.createdAt}}
     </div>
     <hr/>
     <div class="post-addcomment">
@@ -46,6 +46,7 @@
 import PostService from '../services/PostService.js'
 export default {
   name: "PostPreview",
+  props:['story'],
   data() {
     return {
       comments:[

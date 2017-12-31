@@ -6,71 +6,95 @@ export const SAVE_POST = 'savePost';
 
 export default {
     state: {
-        posts:[],
+        posts: [],
         currPost: null,
-        
+        feed: []
+
     },
     getters: {
-        
+
     },
+
     mutations: {
-        setPosts(state, posts){
+        setFeed(state, feed) {
+            console.log(feed)
+            state.feed.push(...feed)
+        },
+        setPosts(state, posts) {
             state.posts = posts;
         },
-        removePost(state, payload){
+        removePost(state, payload) {
             state.posts = state.posts.filter(post => post.id !== payload.id);
         },
-        setCurrentPost(state, post){
+        setCurrentPost(state, post) {
             state.currPost = post
         }
     },
     actions: {
-        loadPost(store, payload){
+        reqFeed(userId) {
+            console.log('getPosts activeted')
+            socket.emit('req feed')
+
+        },
+        loadPost(store, payload) {
             return PostService.getPostById(payload.id)
-            .then(post => {
-                store.commit('setCurrentPost', post)
-                console.log('post lodeded',post);
-                return post
-            })
-            .catch(err =>{
-                store.commit('setCurrentPost', null);
-                console.log('post did not loded');
-            })
+                .then(post => {
+                    store.commit('setCurrentPost', post)
+                    console.log('post lodeded', post);
+                    return post
+                })
+                .catch(err => {
+                    store.commit('setCurrentPost', null);
+                    console.log('post did not loded');
+                })
         },
 
-        [LOAD_POSTS]( context , payload){
-            console.log({payload, context})
+        [LOAD_POSTS](context, payload) {
+            // console.log({ payload, context })
             return PostService.getPosts(payload.postIds)
-            .then(posts =>{
-                context.commit('setPosts', posts);
-                console.log('loadPost goood!', posts);
-                
-            })
-            .catch(err => {
-                console.log('loadPost failed!!!!!');
-                context.commit('setPosts', []);
-              })
+                .then(posts => {
+                    context.commit('setPosts', posts);
+                    console.log('loadPost goood!', posts);
+
+                })
+                .catch(err => {
+                    console.log('loadPost failed!!!!!');
+                    context.commit('setPosts', []);
+                })
         },
         [DELETE_POST](store, payload) {
             return PostService.deletePost(payload.id)
-              .then(_ => {
-                store.commit({ type: 'removePost', id: payload.id })
-                console.log('post deleted id:', payload.id);
-      
-              })
-              .catch(err => {
-                console.log('post ***wasnt*** deleted id:', payload.id);
-              })
-          },
-          [SAVE_POST](store, payload) {
-              console.log(payload)
-            return PostService.savePost(payload.comment,payload.user)
-              .then(savedPost => {
-                store.commit({type: 'setCurrentPost', post : savedPost});
-              })
-              .catch(err => {
-                console.log ('cant save currPost!!');
-              })
-          }
+                .then(_ => {
+                    store.commit({ type: 'removePost', id: payload.id })
+                    console.log('post deleted id:', payload.id);
+
+                })
+                .catch(err => {
+                    console.log('post ***wasnt*** deleted id:', payload.id);
+                })
+        },
+        [SAVE_POST](store, payload) {
+            console.log(payload)
+            return PostService.savePost(payload.comment, payload.user)
+                .then(savedPost => {
+                    store.commit({ type: 'setCurrentPost', post: savedPost });
+                })
+                .catch(err => {
+                    console.log('cant save currPost!!');
+                })
+        }
     }
 }
+
+
+// import io from 'socket.io-client'
+
+// var socket = io('http://localhost:3003')
+
+// socket.on('connect', () => {
+//     console.log('connected to socket')
+//     socket.on('send feed', feed => {
+//         console.log(feed);
+
+//     })
+// })
