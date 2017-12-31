@@ -4,8 +4,10 @@
 
     <div v-if="isLogged">
        <add-photo></add-photo>
+        <button @click="isMapShow = !isMapShow">map shoe toggel</button>
         <followers-list></followers-list>
-        <posts-list></posts-list>
+        <posts-map  :isMapShow="isMapShow" v-if='isMapShow'></posts-map>
+        <posts-list v-else></posts-list>
     </div>
     <!-- <div class="loggin" v-else> -->
       <pre-loggin v-else></pre-loggin>
@@ -19,6 +21,7 @@ import PreLoggin from "../components/PreLoggin";
 import FollowersList from "../components/FollowersList";
 import PostService from "../services/PostService.js";
 import PostsList from "../components/PostsList";
+import PostsMap from "../components/PostsMap";
 import { LOAD_POSTS } from "../store/modules/postModule";
 import AddPhoto from "../components/AddPhoto";
 
@@ -27,6 +30,7 @@ export default {
   data() {
     return {
         // isLogged: true
+        isMapShow: false,
     };
   },
   created() {
@@ -48,7 +52,11 @@ export default {
     PostsList,
     FollowersList,
     PreLoggin,
+<<<<<<< HEAD
     AddPhoto
+=======
+    PostsMap,
+>>>>>>> map
   }
 };
 </script>

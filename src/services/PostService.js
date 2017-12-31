@@ -11,8 +11,8 @@ var posts = [
         createdAt: 47479987,
         postText: "lorm ipsom",
         geoLocation: {
-            lat: "x",
-            long: "Y"
+            lat: 31.7767189,
+            long:35.2345200
         },
         likes: [],
         comments: [
@@ -29,8 +29,8 @@ var posts = [
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom",
         geoLocation: {
-            lat: "x",
-            long: "Y"
+            lat: 31.7767215,
+            long: 35.2345185
         },
         likes: [1],
         comments: [
@@ -47,8 +47,8 @@ var posts = [
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom lorm ipsom",
         geoLocation: {
-            lat: "x",
-            long: "Y"
+            lat: 31.7767330,
+            long: 35.2345270
         },
         likes: [1, 12],
         comments: [
@@ -73,8 +73,8 @@ var posts = [
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom lorm ipsom",
         geoLocation: {
-            lat: "x",
-            long: "Y"
+            lat: 31.7767500,
+            long: 35.2345070
         },
         likes: [1, 12],
         comments: [
@@ -99,8 +99,8 @@ var posts = [
         createdAt: 47479987,
         postText: "lorm ipsom lorm ipsom lorm ipsom",
         geoLocation: {
-            lat: "x",
-            long: "Y"
+            lat: 31.7767200,
+            long: 35.2345270
         },
         likes: ['1', '12'],
         comments: [
@@ -177,7 +177,9 @@ function savePost(post,userId ) {
 
 function getPostById(postId){
     return new Promise((resolve, reject) => {
-        var foundPost = post.find(post => post.id === postId)
+        var foundPost = posts.find(post => post._id === postId);
+        console.log('posts in Post service > getPostById', posts);
+        console.log('foundPost in Post service > getPostById', foundPost);
         if (foundPost) resolve(foundPost)
         else reject();
     })
@@ -196,6 +198,7 @@ function getPostById(postId){
 
 
 export default {
+    posts,
     getPosts,
     deletePost,
     savePost,
