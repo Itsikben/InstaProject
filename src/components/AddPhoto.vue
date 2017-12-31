@@ -7,6 +7,7 @@
     <input class="input" type="text" placeholder="add coment" v-model="comment">
     <img :src="uploadedPhoto">
     <a class="button is-dark" @click="sendPost">post!</a>
+    <router-link to="/UserProfile/:5a451f41798f9438a4172044"></router-link>
   </div>
   
   </div>

@@ -47,6 +47,17 @@ export default {
                     store.commit('setCurrentPost', null);
                     console.log('post did not loded');
                 })
+        // loadPost(store, payload){
+        //     return PostService.getPostByUserId(payload.id)
+        //     .then(post => {
+        //         store.commit('setCurrentPost', post)
+        //         console.log('post lodeded',post);
+        //         return post
+        //     })
+        //     .catch(err =>{
+        //         store.commit('setCurrentPost', null);
+        //         console.log('post did not loded');
+        //     })
         },
 
         [LOAD_POSTS](context, payload) {
