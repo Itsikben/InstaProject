@@ -16,6 +16,9 @@ export default {
     },
 
     mutations: {
+        updateFeed(state,{updateInfo}) {
+            state.feed.splice(updateInfo.idx,1,updateInfo.post)
+        },
         setFeed(state, feed) {
             console.log(feed)
             state.feed.push(...feed)

@@ -18,7 +18,7 @@
           <i v-else class="fa fa-heart fa-2x red" aria-hidden="true"></i>
         </span> 
         <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
-        <p>1,756 likes</p>
+        <p>{{story.likes.length}}</p>
       </div>
       <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
     </div>
@@ -28,8 +28,8 @@
     </div>
     <div class="post-comments">
       <div class="comment" v-for="(comment,index) in comments" :key="index">
-        <span class="user-name">{{comment.user}}</span> 
-        <span>{{comment.comment}}</span>     
+        <span class="user-name">{{comment.username}}: </span> 
+        <span>{{comment.text}}</span>     
       </div>
     </div>
     <div class="post-createdtime">
@@ -37,78 +37,81 @@
     </div>
     <hr/>
     <div class="post-addcomment">
-      <textarea v-model="tempComment.comment" class="comment-textarea" type="text" placeholder="Add a comment..." @keypress.enter.prevent="addComment"></textarea>
+      <textarea v-model="commentTxt" class="comment-textarea" type="text" placeholder="Add a comment..." @keypress.enter.prevent="addComment"></textarea>
     </div>
   </section>
 </template>
 
 <script>
-import PostService from '../services/PostService.js'
+import PostService from "../services/PostService.js";
 export default {
   name: "PostPreview",
-  props:['story'],
+  props: ["story"],
   data() {
     return {
-      comments:[
-      ],
-      tempComment:{
-        user:'sumbat_tad',
-        comment:''
-      },
-      isLiked:false,
-      likeAnim:false,
+      commentTxt: "",
+      isLiked: false,
+      likeAnim: false,
       msg: "Welcome to Your Vue.js App"
     };
   },
-  computed:{
-    likeAnimClass(){
-      return{
-        'animated bounceIn': this.likeAnim,
-        'animated zoomOut': !this.likeAnim,
-      }
+  computed: {
+    likeAnimClass() {
+      return {
+        "animated bounceIn": this.likeAnim,
+        "animated zoomOut": !this.likeAnim
+      };
+    },
+    comments() {
+      return this.story.comments;
     }
   },
-  created(){
-  this.$store.dispatch({type: 'loadPosts'});
+  created() {
+    this.$store.dispatch({ type: "loadPosts" });
   },
-  methods:{
-    addComment(){
-      this.comments.push(this.tempComment);
-      this.tempComment = {
-        user:'sumbat_tad',
-        comment:''
+  methods: {
+    addComment() {
+      var commentInfo = {
+        text: this.commentTxt,
+        userId: this.$store.state.user.user._id,
+        storyId: this.story._id,
+        username: this.$store.state.user.user.username,
       }
+      console.log('add comment executed')
+      this.$socket.emit("sendComment", commentInfo);
     },
-    toggleLike(){
+    toggleLike() {
       this.isLiked = !this.isLiked;
       this.animateLike();
-      
     },
-    animateLike(){
+    animateLike() {
       this.likeAnim = true;
       setTimeout(() => {
         this.likeAnim = false;
       }, 1000);
     },
-    like(){
+    like() {
       this.isLiked = true;
-      this.animateLike();
+      var likeInfo = {
+        userId: this.$store.state.user.user._id,
+        storyId: this.story._id
+      };
+      this.$socket.emit("sendLike", likeInfo);
     },
-    deletePost(postId){
-      PostService.deletePost()
+    deletePost(postId) {
+      PostService.deletePost();
     }
   }
 };
 </script>
 <style scoped>
-.red{
+.red {
   color: #ed4956;
 }
-.post-addcomment{
+.post-addcomment {
   font-size: 1.2em;
   display: flex;
   padding: 16px 16px;
-  
 }
 .comment-textarea {
   width: 100%;
@@ -124,7 +127,8 @@ export default {
 }
 .post {
   border-radius: 3px;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   margin: 0 auto;
   font-size: 0.83em;
   border: 1px solid #e6e6e6;
