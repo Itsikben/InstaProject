@@ -4,12 +4,13 @@
       <div class="instagram">
         <img  src="https://instagram.fhfa2-1.fna.fbcdn.net/t51.2885-19/s150x150/25012742_296524800856734_2015366146122842112_n.jpg" class="user-img"/>
       </div>
-      <span class="user-name">sumbat_tad</span> 
+      <span class="user-name">{{story.username}}</span>
     </div>
+      <span class="story-title">{{story.title}}</span>
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
-      <img :src="story.imgUrl">
-      <button @click="deletePost()">del</button>
+      <img :src="story.img">
+      <!-- <button @click="deletePost()">del</button> -->
     </div>
     <div class="post-statistics">
       <div>
@@ -33,7 +34,7 @@
       </div>
     </div>
     <div class="post-createdtime">
-      created at: {{story.createdAt}}
+      posted {{currTime}} ago
     </div>
     <hr/>
     <div class="post-addcomment">
@@ -52,7 +53,7 @@ export default {
       commentTxt: "",
       isLiked: false,
       likeAnim: false,
-      msg: "Welcome to Your Vue.js App"
+      currTime: PostService.timeSince(this.story.createdAt)
     };
   },
   computed: {
@@ -105,6 +106,9 @@ export default {
 };
 </script>
 <style scoped>
+.story-title{
+  font-size: 1.8em
+}
 .red {
   color: #ed4956;
 }

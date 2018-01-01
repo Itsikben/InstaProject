@@ -20,6 +20,7 @@ export default {
              state.feed.splice(updateInfo.idx,1,updateInfo.post)
         },
         setFeed(state, feed) {
+            console.log('feed goes into state: ',feed)
             state.feed.push(...feed)
         },
         setPosts(state, posts) {
