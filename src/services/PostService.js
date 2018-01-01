@@ -58,7 +58,9 @@ function savePost(dat) {
 
 function getPostById(postId) {
     return new Promise((resolve, reject) => {
-        var foundPost = post.find(post => post.id === postId)
+        var foundPost = posts.find(post => post._id === postId);
+        console.log('posts in Post service > getPostById', posts);
+        console.log('foundPost in Post service > getPostById', foundPost);
         if (foundPost) resolve(foundPost)
         else reject();
     })
@@ -81,7 +83,8 @@ function getPostsByUserId(userId) {
 
 
 export default {
-
+    posts,
+    getPosts,
     deletePost,
     savePost,
     getPostById,
