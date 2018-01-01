@@ -64,6 +64,7 @@ function getPostById(postId) {
     })
 }
 function getPostsByUserId(userId) {
+    console.log('service id', userId)
     return axios
         .get(`${GET_STORYS}/${userId.userId}`)
         .then(res => {

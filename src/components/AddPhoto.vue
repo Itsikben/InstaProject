@@ -4,6 +4,7 @@
     <div class="add-img">
    <!-- <a href="#" id="upload_widget_opener" @click="add">add photo</a> -->
     <div class="control">
+    <input class="input" type="text" placeholder="Title" v-model="title">
     <input class="input" type="text" placeholder="add text" v-model="text">
     <input class="input" type="text" placeholder="add img url" v-model="imgUrl">
    
@@ -24,7 +25,8 @@ export default {
   data() {
     return {
         text:'',
-        imgUrl:''
+        imgUrl:'',
+        title: ''
     }
   },
   computed: {
@@ -38,7 +40,8 @@ export default {
   methods: {
       sendPost() {
        var post =   {
-        "userId": this.user.userId,
+         "title": this.title,
+        "userId": this.user._id,
         "username": this.user.username,
         "img":this.imgUrl,
         "geolocation": '',
