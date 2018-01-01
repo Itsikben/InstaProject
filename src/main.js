@@ -44,6 +44,12 @@ new Vue({
           return
         }
       }
+    },
+    sendNewPost(post){
+      console.log('new post received: ',post)
+      post = [post]
+      this.$store.commit('setFeed', post)
     }
-  },
+  }
+  
 })

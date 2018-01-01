@@ -45,7 +45,7 @@ export default {
         "username": this.user.username,
         "img":this.imgUrl,
         "geolocation": '',
-        "created": Date.now(),
+        "createdAt": Date.now(),
         "likes": [],
           "comments": [],
           "text": this.text
