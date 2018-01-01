@@ -4,11 +4,12 @@
     <div class="add-img">
    <!-- <a href="#" id="upload_widget_opener" @click="add">add photo</a> -->
     <div class="control">
-    <input class="input" type="text" placeholder="add coment" v-model="comment">
-    <input class="input" type="text" placeholder="add img url" v-model="img">
+    <input class="input" type="text" placeholder="Title" v-model="title">
+    <input class="input" type="text" placeholder="add text" v-model="text">
+    <input class="input" type="text" placeholder="add img url" v-model="imgUrl">
    
     <a class="button is-dark" @click="sendPost">post!</a>
-    <router-link to="/UserProfile/:5a451f41798f9438a4172044"></router-link>
+    <router-link :to="submitUrl"></router-link>
   </div>
   </div>
   </section>
@@ -23,44 +24,44 @@ export default {
   name: "AddPhoto",
   data() {
     return {
-        uploadedPhoto:'',
-        comment:'',
-        img:''
+        text:'',
+        imgUrl:'',
+        title: ''
     }
   },
   computed: {
-    userId() {
-      return this.$store.state.user.user._id
-    },
     user() {
-      return this.$store.state.user.user.userName
+      return this.$store.state.user.user
+    },
+    submitUrl() {
+      return '/UserProfile/' + this.user.userId
     }
-
   },
   methods: {
-  
-      // sendPost() {
-      //  var post =   {
-      //   "userId": this.userId,
-      //   "userName": this.user,
-      //   "img":this.img,
-      //   "geolocation": '',
-      //   "created":Date.now(),
-      //   "likes": [],
-      //     "comments": [
-      // {
-      //     "username":'',
-      //     "userId": '',
-      //     "text": '',
-      //     "createdAt":''
-      // }
-      //  }
-
-
-}
-
-
-  
+      sendPost() {
+       var post =   {
+         "title": this.title,
+        "userId": this.user._id,
+        "username": this.user.username,
+        "img":this.imgUrl,
+        "geolocation": '',
+        "created": Date.now(),
+        "likes": [],
+          "comments": [],
+          "text": this.text
+        }
+        this.$store.dispatch(SAVE_POST, {post});
+      },
+    //   getMyLocation() {
+    // // return new Promise((resolve, reject) => {
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(({ coords }) => {
+    //             resolve({
+    //                 lat: coords.latitude,
+    //                 lng: coords.longitude
+    //             })
+    //         })
+  }
 };
 </script>
 <style>
