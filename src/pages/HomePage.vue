@@ -52,11 +52,8 @@ export default {
     PostsList,
     FollowersList,
     PreLoggin,
-<<<<<<< HEAD
-    AddPhoto
-=======
+    AddPhoto,
     PostsMap,
->>>>>>> map
   }
 };
 </script>
