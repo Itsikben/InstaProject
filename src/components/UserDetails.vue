@@ -42,12 +42,12 @@
                   </div>
                 </div>
           
-              </nav>
               
-            </div>
+              
+         
             
 
-        </div>
+      
       <div class="raund-img" v-if="user.profilePic"><img :src="user.profilePic"></div>
       <div v-else><img src="http://res.cloudinary.com/dxdmd1v1z/image/upload/v1514319715/noimg_obp9e7.jpg">you need to add photo</div>
     </section>
