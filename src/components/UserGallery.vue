@@ -12,7 +12,8 @@
         {{post.post}} 
         <div class="card-image">
           <figure class="image is-4by3">
-            <img :src="post.img" alt="Placeholder image">
+            <img :src="`${post.post.img}`" alt="Placeholder image">
+            
           </figure>
         </div>
 
@@ -84,7 +85,7 @@ export default {
   max-width: 200px;
   max-height: 100%;
   margin: 5px;
-   border-radius: 25px
+  border-radius: 25px
 }
 .head{
   background-color: brown;
