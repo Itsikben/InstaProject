@@ -3,8 +3,8 @@
       <router-link to="/" class="nav-txt">geogram</router-link>
       <!-- <router-link to="/DesignImg">DesignImg</router-link> -->
       <div class="left-container">
-      <router-link  :to="{path: '/UserProfile/' + userId}"><img src = "../imgs/profile.png"></router-link>
-      <span>Hello, <br>{{username}}</span>
+      <router-link v-if="user" :to="{path: '/UserProfile/' + user._id}"><img src = "../imgs/profile.png" ></router-link>
+      <span v-if="user">Hello, <br>{{user.username}}</span>
       <a class="log-out" @click="logout">Log out</a>
         </div>
   </nav>
@@ -20,12 +20,16 @@ export default {
       return user.username;
     },
     userId() {
-     return this.$store.state.user.user._id;
+      return this.$store.state.user.user._id;
+    },
+    user() {
+      return this.$store.state.user.user;
     }
   },
   methods: {
     logout() {
       this.$store.commit("setUser", { user: null });
+      this.$router.push("/");
     }
   }
 };
@@ -58,12 +62,11 @@ img {
 nav {
   margin: 0;
   height: 50px;
-  background: rgb(221, 211, 211);  
+  background: rgb(221, 211, 211);
   border-bottom: 1px solid #e6e6e6;
   position: fixed;
   width: 100%;
   z-index: 3;
- 
 }
 .nav-txt {
   position: relative;

@@ -9,7 +9,7 @@
 <div class="head"><p> gallery</p></div>
      <div class="photos-holder">
       <div class="card" v-for="post in postToDisplay" :key='post.id' >
-        {{post}} 
+        {{post.userId}} 
         <div class="card-image">
           <figure class="image is-4by3">
             <img :src="`${post.img}`" alt="Placeholder image">
