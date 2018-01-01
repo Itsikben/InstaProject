@@ -97,7 +97,10 @@ export default {
           fullName: this.fullName
         })
         .then(_ => {
-          console.log('open')
+          this.$store.dispatch('login', {
+          username: this.username,
+          pass: this.pass
+      })
           this.$router.push("/");
         })
         .catch(err => console.log(err));

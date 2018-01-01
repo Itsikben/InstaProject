@@ -52,20 +52,16 @@ export default {
         }
         this.$store.dispatch(SAVE_POST, {post});
       },
-      getMyLocation() {
-    // return new Promise((resolve, reject) => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(({ coords }) => {
-                resolve({
-                    lat: coords.latitude,
-                    lng: coords.longitude
-                })
-            })
-        }
-}
-
-
-    }
+    //   getMyLocation() {
+    // // return new Promise((resolve, reject) => {
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(({ coords }) => {
+    //             resolve({
+    //                 lat: coords.latitude,
+    //                 lng: coords.longitude
+    //             })
+    //         })
+  }
 };
 </script>
 <style>
@@ -75,7 +71,7 @@ export default {
 .add-img {
   max-width: 500px;
   max-height: 250pxs;
-  border:solid cadetblue; 
+  border: solid cadetblue;
 }
 </style>
 
