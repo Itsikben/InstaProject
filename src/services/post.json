@@ -1,19 +1,24 @@
 {
-    "userId": "userId",
-    "_id": "_id",
-    "imgUrl": "img url",
-    "createdAt": "47479987",
-    "postText": "string",
-    "geoLocation": {
-        "lat": "x",
-        "long": "Y"
-    },
-    "likes": [],
-    "comments": [
-        {
-            "userId": 1,
-            "text": "string",
-            "createdAt": 3165421
-        }
-    ]
-}
+        "_id" : "5a490627877dccb796fd8665",
+        "title" : "TITLEEE",
+        "userId" : "5a44f00159acfb16905788d7",
+        "imgUrl" : "https://s3.amazonaws.com/bk-static-prd-newctn/files/styles/discover_destaque/s3/2016-11/04%20-%20Roma.jpg?itok=sFK02oiy",
+        "createdAt" : "47479987",
+        "postText" : "string",
+        "geoLocation" : {
+            "lat" : "x",
+            "long" : "Y"
+        },
+        "likes" : [ 
+            "5a44f00159acfb16905788d7", 
+            "5a43bc6dbc5c7841dff1247e"
+        ],
+        "comments" : [ 
+            {
+                "username" : "bla bli",
+                "userId" : 1.0,
+                "text" : "string",
+                "createdAt" : 3165421.0
+            }
+        ]
+    }

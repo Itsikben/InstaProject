@@ -31,11 +31,11 @@ new Vue({
       this.$store.commit('setFeed',feed)
     },
     postUpdate(post){
-      console.log('update post happend,info: ',post)
+      // console.log('update post happend,info: ',post)
       var feed = this.$store.state.post.feed
       for (let i = 0; i < feed.length; i++) {
         if(feed[i]._id === post._id){
-          console.log('post has been found')
+          // console.log('post has been found')
           var updateInfo = {
             post,
             idx: i
