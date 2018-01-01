@@ -1,9 +1,9 @@
 <template>
   <nav>
-      <router-link to="/" class="nav-txt">Instagram</router-link>
+      <router-link to="/" class="nav-txt">geogram</router-link>
       <!-- <router-link to="/DesignImg">DesignImg</router-link> -->
       <div class="left-container">
-      <router-link :to="{path: '/UserProfile/' + userId}"><img src = "../imgs/profile.png"></router-link>
+      <router-link  :to="{path: '/UserProfile/' + userId}"><img src = "../imgs/profile.png"></router-link>
       <span>Hello, <br>{{username}}</span>
       <a class="log-out" @click="logout">Log out</a>
         </div>
@@ -20,7 +20,7 @@ export default {
       return user.username;
     },
     userId() {
-     return "5a451f41798f9438a4172044";
+     return this.$store.state.user.user._id;
     }
   },
   methods: {

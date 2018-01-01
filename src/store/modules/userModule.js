@@ -4,7 +4,7 @@ import PostService from "../../services/PostService";
 
 export default {
     state: {
-        user: null,
+        user: '',
         // guestUser: {
         //     "id": 3,
         //     "userName": "guest",
@@ -26,6 +26,7 @@ export default {
     },
     mutations: {
         setUser(state, {user}) {
+            console.log(user)
             state.user = user
         },
         setGuestUser(state, {user}) {

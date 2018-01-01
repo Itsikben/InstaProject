@@ -17,7 +17,6 @@ export default {
 
     mutations: {
         setFeed(state, feed) {
-            console.log(feed)
             state.feed.push(...feed)
         },
         setPosts(state, posts) {
@@ -36,43 +35,43 @@ export default {
             socket.emit('req feed')
 
         },
-        loadPost(store, payload) {
-            return PostService.getPostById(payload.id)
-                .then(post => {
-                    store.commit('setCurrentPost', post)
-                    console.log('post lodeded', post);
-                    return post
-                })
-                .catch(err => {
-                    store.commit('setCurrentPost', null);
-                    console.log('post did not loded');
-                })
-        // loadPost(store, payload){
-        //     return PostService.getPostByUserId(payload.id)
-        //     .then(post => {
-        //         store.commit('setCurrentPost', post)
-        //         console.log('post lodeded',post);
-        //         return post
-        //     })
-        //     .catch(err =>{
-        //         store.commit('setCurrentPost', null);
-        //         console.log('post did not loded');
-        //     })
+        // loadPost(store, payload) {
+        //     return PostService.getPostById(payload.id)
+        //         .then(post => {
+        //             store.commit('setCurrentPost', post)
+        //             console.log('post lodeded', post);
+        //             return post
+        //         })
+        //         .catch(err => {
+        //             store.commit('setCurrentPost', null);
+        //             console.log('post did not loded');
+        //         })
+        [LOAD_POSTS](store, payload){
+            return PostService.getPostsByUserId(payload)
+            .then(data => {
+                store.commit('setPosts', data.data)
+                console.log('post lodeded',posts);
+                return posts
+            })
+            .catch(err =>{
+                store.commit('setCurrentPost', null);
+                console.log('post did not loded');
+            })
         },
 
-        [LOAD_POSTS](context, payload) {
-            // console.log({ payload, context })
-            return PostService.getPosts(payload.postIds)
-                .then(posts => {
-                    context.commit('setPosts', posts);
-                    console.log('loadPost goood!', posts);
+        // [LOAD_POSTS](context, payload) {
+        //     // console.log({ payload, context })
+        //     return PostService.getPosts(payload.postIds)
+        //         .then(posts => {
+        //             context.commit('setPosts', posts);
+        //             console.log('loadPost goood!', posts);
 
-                })
-                .catch(err => {
-                    console.log('loadPost failed!!!!!');
-                    context.commit('setPosts', []);
-                })
-        },
+        //         })
+        //         .catch(err => {
+        //             console.log('loadPost failed!!!!!');
+        //             context.commit('setPosts', []);
+        //         })
+        // },
         [DELETE_POST](store, payload) {
             return PostService.deletePost(payload.id)
                 .then(_ => {
@@ -86,7 +85,7 @@ export default {
         },
         [SAVE_POST](store, payload) {
             console.log(payload)
-            return PostService.savePost(payload.comment, payload.user)
+            return PostService.savePost(payload)
                 .then(savedPost => {
                     store.commit({ type: 'setCurrentPost', post: savedPost });
                 })

@@ -5,11 +5,11 @@
    <!-- <a href="#" id="upload_widget_opener" @click="add">add photo</a> -->
     <div class="control">
     <input class="input" type="text" placeholder="add coment" v-model="comment">
-    <img :src="uploadedPhoto">
+    <input class="input" type="text" placeholder="add img url" v-model="img">
+   
     <a class="button is-dark" @click="sendPost">post!</a>
     <router-link to="/UserProfile/:5a451f41798f9438a4172044"></router-link>
   </div>
-  
   </div>
   </section>
 </template>
@@ -24,28 +24,70 @@ export default {
   data() {
     return {
         uploadedPhoto:'',
-        comment:''
-
+        comment:'',
+        img:''
     }
   },
   computed: {
     userId() {
       return this.$store.state.user.user._id
     },
+    user() {
+      return this.$store.state.user.user.userName
+    }
 
   },
   methods: {
-      // add(){  
-      // cloudinary.openUploadWidget({ cloud_name: 'dxdmd1v1z', upload_preset: 'xy7rt9uw'}, 
-      // (error, result) => { 
-      //   console.log( result[0].secure_url)
-      //   this.uploadedPhoto = result[0].secure_url;
-      //   });
-      // },
+      bildPost() {
+        return  {
+          "userId": this.userId,
+          "userName": this.user,
+          "img":this.img,
+          "geolocation": getMyLocation(),
+          "created":Date.now(),
+          "likes": [],
+            "comments": [
+        {
+            "userId": '',
+            "text": '',
+            "createdAt":''
+        }
+    ]
+        }
+      },
       sendPost() {
-        this.$store.dispatch(SAVE_POST, {comment: this.comment, user: this.userId});
-        
+       var post =   {
+        "userId": this.userId,
+        "userName": this.user,
+        "img":this.img,
+        "geolocation": '',
+        "created":Date.now(),
+        "likes": [],
+          "comments": [
+      {
+          "username":'',
+          "userId": '',
+          "text": '',
+          "createdAt":''
       }
+    ]
+        }
+      
+        this.$store.dispatch(SAVE_POST, {post});
+        console.log('add img:',this.userId)
+      },
+      getMyLocation() {
+    // return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(({ coords }) => {
+                resolve({
+                    lat: coords.latitude,
+                    lng: coords.longitude
+                })
+            })
+        }
+}
+
 
     }
 };
