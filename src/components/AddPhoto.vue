@@ -38,58 +38,29 @@ export default {
 
   },
   methods: {
-      bildPost() {
-        return  {
-          "userId": this.userId,
-          "userName": this.user,
-          "img":this.img,
-          "geolocation": getMyLocation(),
-          "created":Date.now(),
-          "likes": [],
-            "comments": [
-        {
-            "userId": '',
-            "text": '',
-            "createdAt":''
-        }
-    ]
-        }
-      },
-      sendPost() {
-       var post =   {
-        "userId": this.userId,
-        "userName": this.user,
-        "img":this.img,
-        "geolocation": '',
-        "created":Date.now(),
-        "likes": [],
-          "comments": [
-      {
-          "username":'',
-          "userId": '',
-          "text": '',
-          "createdAt":''
-      }
-    ]
-        }
-      
-        this.$store.dispatch(SAVE_POST, {post});
-        console.log('add img:',this.userId)
-      },
-      getMyLocation() {
-    // return new Promise((resolve, reject) => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(({ coords }) => {
-                resolve({
-                    lat: coords.latitude,
-                    lng: coords.longitude
-                })
-            })
-        }
+  
+      // sendPost() {
+      //  var post =   {
+      //   "userId": this.userId,
+      //   "userName": this.user,
+      //   "img":this.img,
+      //   "geolocation": '',
+      //   "created":Date.now(),
+      //   "likes": [],
+      //     "comments": [
+      // {
+      //     "username":'',
+      //     "userId": '',
+      //     "text": '',
+      //     "createdAt":''
+      // }
+      //  }
+
+
 }
 
 
-    }
+  
 };
 </script>
 <style>
@@ -99,7 +70,7 @@ export default {
 .add-img {
   max-width: 500px;
   max-height: 250pxs;
-  border:solid cadetblue; 
+  border: solid cadetblue;
 }
 </style>
 
