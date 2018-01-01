@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "axios": "^0.17.1",
     "blueimp-file-upload": "^9.19.2",
     "bulma": "^0.6.1",

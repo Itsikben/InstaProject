@@ -47,7 +47,7 @@ function deletePost(postId) {
 }
 
 function savePost(dat) {
-
+ console.log('service check',dat)
 
     return axios({
         method: 'post',
@@ -64,11 +64,10 @@ function getPostById(postId) {
     })
 }
 function getPostsByUserId(userId) {
-   console.log('this is uaer id',userId)
     return axios
         .get(`${GET_STORYS}/${userId.userId}`)
         .then(res => {
-
+            console.log('servic,',res)
             return res
         })
         .catch(e => {

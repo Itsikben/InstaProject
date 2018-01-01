@@ -9,10 +9,11 @@
 <div class="head"><p> gallery</p></div>
      <div class="photos-holder">
       <div class="card" v-for="post in postToDisplay" :key='post.id' >
-        {{post.post}} 
+        {{post}} 
         <div class="card-image">
           <figure class="image is-4by3">
-            <img :src="post.img" alt="Placeholder image">
+            <img :src="`${post.img}`" alt="Placeholder image">
+            
           </figure>
         </div>
 
@@ -84,7 +85,7 @@ export default {
   max-width: 200px;
   max-height: 100%;
   margin: 5px;
-   border-radius: 25px
+  border-radius: 25px
 }
 .head{
   background-color: brown;

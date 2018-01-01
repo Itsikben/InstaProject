@@ -2,7 +2,6 @@
   <section>
     
     <user-details></user-details>
-    
     <user-gallery></user-gallery>
   </section>
 </template>
