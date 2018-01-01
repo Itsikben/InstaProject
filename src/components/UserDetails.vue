@@ -24,7 +24,10 @@
                     <p class="title" v-if="user.followersIds">{{user.followersIds.length}}</p>
                   </div>
                 </div>
-          
+            </nav>
+            </div>
+        </div>
+            
               
               
          
@@ -41,20 +44,19 @@ import UserService from "../services/UserService";
 
 export default {
   name: "UserDetails",
-    data() {
-      return {
+  data() {
+    return {
       user: null
     };
   },
   created() {
-        var userId = this.$route.params.userId
-        UserService.getUserById(userId)
-         .then(user => this.user = user)
-         .catch(err => {
-             this.$router.push('/')
-         })
-    
-  },
+    var userId = this.$route.params.userId;
+    UserService.getUserById(userId)
+      .then(user => (this.user = user))
+      .catch(err => {
+        this.$router.push("/");
+      });
+  }
   // computed: {
   //   user() {
   //     return this.$store.state.user.user;
@@ -72,8 +74,7 @@ export default {
   justify-content: space-between;
   margin-bottom: 5%;
   margin-top: 5%;
-  font-family: 'Lato', sans-serif;
-
+  font-family: "Lato", sans-serif;
 }
 .raund-img {
   display: inline-block;
@@ -87,8 +88,6 @@ export default {
 .raund-img img {
   width: auto;
   height: 100%;
-  
-
 }
 .details-wind {
   width: 100%;
