@@ -1,6 +1,6 @@
-const ADD_URL = 'http://localhost:3003/addStory'
-const GET_URL = 'http://localhost:3003/getStory'
-const GET_STORYS = 'http://localhost:3003/userStories'
+const ADD_URL = 'https://geogram-coding.herokuapp.com/addStory'
+const GET_URL = 'https://geogram-coding.herokuapp.com/getStory'
+const GET_STORYS = 'https://geogram-coding.herokuapp.com/userStories'
 import axios from 'axios'
 
 // fn returns an empty post
