@@ -50,7 +50,7 @@ export default {
             zoom: 13
           });
           PostMapService.initMap(this.map);
-          console.log("map created");
+          // console.log("map created");
           resolve();
         };
       });
@@ -60,7 +60,7 @@ export default {
       // var map = document.getElementById("map");
       console.log("feed in PostsMap > runderMarker", this.feed);
       var self = this;
-      console.log("self.map in rundermap", self.map);
+      // console.log("self.map in rundermap", self.map);
       this.feed.forEach(story => {
         // console.log(story);
 

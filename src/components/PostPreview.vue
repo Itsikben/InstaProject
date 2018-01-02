@@ -9,6 +9,7 @@
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
       <img :src="story.imgUrl">
+      <router-link :to="'/UserProfile/Post/' + story._id">Details</router-link>
       <button @click="deletePost()">del</button>
     </div>
     <div class="post-statistics">
@@ -66,6 +67,9 @@ export default {
         'animated bounceIn': this.likeAnim,
         'animated zoomOut': !this.likeAnim,
       }
+    },
+    feed(){
+      return this.$store.state.post.feed;
     }
   },
   created(){
