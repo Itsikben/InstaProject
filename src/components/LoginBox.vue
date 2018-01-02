@@ -88,6 +88,7 @@ export default {
         username: this.username,
         pass: this.pass
       })
+       this.$store.commit("setLogged", { isLogged:true });
     },
     signup() {
       this.$store
@@ -101,7 +102,9 @@ export default {
           username: this.username,
           pass: this.pass
       })
+      this.$store.commit("setLogged", { isLogged:true });
           this.$router.push("/");
+          
         })
         .catch(err => console.log(err));
     },

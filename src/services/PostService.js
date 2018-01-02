@@ -1,6 +1,6 @@
-const ADD_URL = 'http://localhost:3003/addStory'
-const GET_URL = 'http://localhost:3003/getStory'
-const GET_STORYS = 'http://localhost:3003/userStories'
+const ADD_URL = 'https://geogram-coding.herokuapp.com/addStory'
+const GET_URL = 'https://geogram-coding.herokuapp.com/getStory'
+const GET_STORYS = 'https://geogram-coding.herokuapp.com/userStories'
 import axios from 'axios'
 
 // fn returns an empty post
@@ -58,7 +58,7 @@ function savePost(dat) {
 
 function getPostById(postId) {
     return new Promise((resolve, reject) => {
-        var foundPost = post.find(post => post.id === postId)
+        var foundPost = posts.find(post => post._id === postId);
         if (foundPost) resolve(foundPost)
         else reject();
     })
@@ -68,7 +68,6 @@ function getPostsByUserId(userId) {
     return axios
         .get(`${GET_STORYS}/${userId.userId}`)
         .then(res => {
-            console.log('servic,',res)
             return res
         })
         .catch(e => {
@@ -108,7 +107,8 @@ function timeSince(date) {
 
 
 export default {
-
+    // posts,
+    // getPosts,
     deletePost,
     savePost,
     getPostById,

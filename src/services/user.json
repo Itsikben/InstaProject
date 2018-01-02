@@ -1,12 +1,11 @@
 {
-    "_id" : "5a44ebbe6c35d51c5c10f997",
-    "userName" : null,
-    "pass" : "123",
-    "userDescriptions" : null,
-    "profilePic" : null,
-    "postIds" : [],
-    "followersIds" : [],
-    "followingIds" : [],
-    "username" : "blabla",
-    "fullname" : "bla bla"
+    "id": 0,
+    "username": "string",
+    "password": "string",
+    "desc": "string",
+    "profilePic": "id of a photo",
+    "postIds": [],
+    "followersIds": [],
+    "followingIds": []    
 }
+
