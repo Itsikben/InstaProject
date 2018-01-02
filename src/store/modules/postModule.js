@@ -8,7 +8,8 @@ export default {
     state: {
         posts: [],
         currPost: null,
-        feed: []
+        feed: [],
+        items:[]
 
     },
     getters: {
