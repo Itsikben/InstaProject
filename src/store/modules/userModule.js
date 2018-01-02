@@ -4,9 +4,25 @@ import PostService from "../../services/PostService";
 
 export default {
     state: {
-        user: '',
+        // user: '',
         isLogged:true,
+        isGuest:true,
+        user:
+        {
+            "_id": {
+                "$oid": "5a4a8ff26834e30014d1e7f6"
+            },
+            "pass": "123456",
+            "desc": "",
+            "profilePic": null,
+            "postIds": [],
+            "followersIds": [],
+            "followingIds": [],
+            "username": "guest",
+            "fullName": "guest"
+        }
     },
+           
     getters: {
         getUser(state,getters){
             console.log(state)
@@ -21,6 +37,9 @@ export default {
         },
         setLogged(state, {isLogged}) {
             state.isLogged = isLogged
+        },
+        setGuest(state, {isGuest}) {
+            state.isGuest = isGuest
         }
 
     },

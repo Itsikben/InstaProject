@@ -9,8 +9,8 @@
 <div class="head"><p> gallery</p></div>
      <div class="photos-holder">
       <div class="card" v-for="post in postToDisplay" :key='post.id' >
-        {{post.userId}} 
-        <div class="card-image">
+        {{post.title}} 
+        <div class="card-image animated fadeInRight">
           <figure class="image is-4by3">
             <img :src="`${post.img}`" alt="Placeholder image">
             
@@ -82,7 +82,8 @@ export default {
   border-radius: 5px;
 }
 .card {
-  max-width: 200px;
+  max-width: 300px;
+  min-width: 250px;
   max-height: 100%;
   margin: 5px;
   border-radius: 25px

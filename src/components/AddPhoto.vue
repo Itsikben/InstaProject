@@ -4,6 +4,7 @@
     <div class="add-img">
    <!-- <a href="#" id="upload_widget_opener" @click="add">add photo</a> -->
     <div class="control">
+      <h1>add new post</h1>
     <input class="input" type="text" placeholder="Title" v-model="title">
     <input class="input" type="text" placeholder="add text" v-model="text">
     <input class="input" type="text" placeholder="add img url" v-model="imgUrl">
@@ -40,7 +41,7 @@ export default {
   methods: {
       sendPost() {
        var post =   {
-         "title": this.title,
+        "title": this.title,
         "userId": this.user._id,
         "username": this.user.username,
         "img":this.imgUrl,
@@ -72,6 +73,15 @@ export default {
   max-width: 500px;
   max-height: 250pxs;
   border: solid cadetblue;
+  margin: auto;
+}
+.control h1 {
+  font-family: 'Lucida Sans';
+  text-align: center;
+  background-color: chocolate;
+}
+.control a{
+  text-align: center;
 }
 </style>
 
