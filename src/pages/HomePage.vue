@@ -29,7 +29,6 @@ export default {
   name: "HomePage",
   data() {
     return {
-        // isLogged: true
         isMapShow: false,
     };
   },
@@ -39,7 +38,7 @@ export default {
   },
   computed:{
     isLogged(){
-      return !!this.$store.state.user.user
+      return this.$store.state.user.isLogged
       
     }
   },

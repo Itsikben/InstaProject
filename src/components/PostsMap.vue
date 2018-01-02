@@ -46,52 +46,48 @@ export default {
             zoom: 13
           });
           PostMapService.initMap(this.map);
-          console.log("map created");
           resolve();
         };
       });
     },
     runderMarkers() {
       // var map = document.getElementById("map");
-      console.log("feed iv PostsMap > runderMarker", this.feed);
-      var self = this;
-      console.log("self.map in rundermap", self.map);
-      this.feed.forEach(story => {
-        console.log(story);
 
-        var contentString =
-          `<div id="content"> 
-          <div id="siteNotice"> 
-          </div>
-          <router-link to="/" >Instagram</router-link>
-          <h1 id="firstHeading" class="firstHeading">${story.title}</h1> 
-          <div id="bodyContent">
-          <img src="${story.imgUrl}">
-          <p>${story.postText}</p>
-          <p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194"> 
-          https://en.wikipedia.org/w/index.php?title=Uluru</a> 
-          (last visited {{story.createdAt}}).</p>
-          </div>
-          </div>`;
+      // console.log("feed iv PostsMap > runderMarker", this.feed);
+      var self = this;
+      // console.log("self.map in rundermap", self.map);
+      this.feed.forEach(story => {
+        var contentString = `<div id="content"> 
+              <div id="siteNotice"> 
+              </div>
+              <router-link to="/" >Instagram</router-link>
+              <h1 id="firstHeading" class="firstHeading">${story.title}</h1> 
+              <div id="bodyContent">
+              <img src="${story.img}">
+              <p>${story.postText}</p>
+              <p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194"> 
+              https://en.wikipedia.org/w/index.php?title=Uluru</a> 
+              (last visited {{story.createdAt}}).</p>
+              </div>
+              </div>`;
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
-
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(
-            story.geoLocation.lat,
-            story.geoLocation.long
+            story.geolocation.lat,
+            story.geolocation.lng,
           ),
           map: this.map,
           title: story.postText,
           icon: {
-            url: story.imgUrl,
-            scaledSize: new google.maps.Size(70, 50)
+            url: story.img,
+            scaledSize: new google.maps.Size(70, 50),
           }
         });
 
-        marker.addListener('click', function() {
+        marker.addListener("click", function() {
           infowindow.open(map, marker);
         });
 

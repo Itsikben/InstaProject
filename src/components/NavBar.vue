@@ -28,8 +28,14 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.commit("setUser", { user: null });
-      this.$router.push("/");
+      if (this.$store.state.user.user){
+        this.$store.commit("setUser", { user: null });
+        this.$router.push("/");
+      } else {
+         this.$store.commit("setLogged", { isLogged:false });
+        this.$router.push("/");
+      }
+      
     }
   }
 };

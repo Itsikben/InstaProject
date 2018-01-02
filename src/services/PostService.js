@@ -59,8 +59,6 @@ function savePost(dat) {
 function getPostById(postId) {
     return new Promise((resolve, reject) => {
         var foundPost = posts.find(post => post._id === postId);
-        console.log('posts in Post service > getPostById', posts);
-        console.log('foundPost in Post service > getPostById', foundPost);
         if (foundPost) resolve(foundPost)
         else reject();
     })
@@ -70,7 +68,6 @@ function getPostsByUserId(userId) {
     return axios
         .get(`${GET_STORYS}/${userId.userId}`)
         .then(res => {
-            console.log('servic,',res)
             return res
         })
         .catch(e => {

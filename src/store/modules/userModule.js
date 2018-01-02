@@ -5,17 +5,7 @@ import PostService from "../../services/PostService";
 export default {
     state: {
         user: '',
-        // guestUser: {
-        //     "id": 3,
-        //     "userName": "guest",
-        //     "pass": "123456",
-        //     "userDescriptions": "guest speical user",
-        //     "profilePic": 3,
-        //     "postIds": [0, 1, 2, 3],
-        //     "followersIds": [1, 2],
-        //     "followingIds": [1, 2],
-        //     "fullName":"guest"
-        // }
+        isLogged:true,
     },
     getters: {
         getUser(state,getters){
@@ -26,12 +16,11 @@ export default {
     },
     mutations: {
         setUser(state, {user}) {
-            debugger;
             console.log(user)
             state.user = user
         },
-        setGuestUser(state, {user}) {
-            state.user = user
+        setLogged(state, {isLogged}) {
+            state.isLogged = isLogged
         }
 
     },
