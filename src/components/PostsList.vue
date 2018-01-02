@@ -2,7 +2,7 @@
   <section>
     <post-preview v-for="(story, idx) in feed" :key="idx" :story="story">
     </post-preview>
-    {{feed[0]}}
+
   </section>
 </template>
 
