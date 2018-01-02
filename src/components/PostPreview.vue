@@ -24,8 +24,8 @@
       <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
     </div>
     <div class="post-content">
-      <span class="user-name">sumbat_tad</span> 
-      <span>sometimes you have to jump and build your wings on the way down..🌌</span>     
+      <span class="user-name">{{story.username}}:</span> 
+      <span>{{story.text}}</span>     
     </div>
     <div class="post-comments">
       <div class="comment" v-for="(comment,index) in comments" :key="index">

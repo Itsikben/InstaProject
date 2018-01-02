@@ -26,7 +26,6 @@ export default {
     },
     mutations: {
         setUser(state, {user}) {
-            debugger;
             console.log(user)
             state.user = user
         },
