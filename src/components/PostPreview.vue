@@ -51,7 +51,6 @@ export default {
   data() {
     return {
       commentTxt: "",
-      isLiked: false,
       likeAnim: false,
       currTime: PostService.timeSince(this.story.createdAt)
     };
@@ -65,6 +64,9 @@ export default {
     },
     comments() {
       return this.story.comments;
+    },
+    isLiked(){
+      return this.story.likes.indexOf(this.$store.state.user.user._id) !== -1
     }
   },
   created() {
@@ -80,9 +82,10 @@ export default {
       }
       console.log('add comment executed')
       this.$socket.emit("sendComment", commentInfo);
+      this.commentTxt = ""
+      console.log(this.story.likes)
     },
     toggleLike() {
-      this.isLiked = !this.isLiked;
       this.animateLike();
     },
     animateLike() {
