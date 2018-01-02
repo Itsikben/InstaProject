@@ -9,7 +9,7 @@ import router from './router/index.js'
 import myStore from './store/store.js'
 import cloudinary from 'cloudinary-core'
 import VueSocketio from 'vue-socket.io';
-Vue.use(VueSocketio, 'https://geogram-coding.herokuapp.com');
+Vue.use(VueSocketio, 'http://localhost:3003');
 
 Vue.config.productionTip = false
 //Vue.use(Vuex)

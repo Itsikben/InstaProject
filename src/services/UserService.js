@@ -1,6 +1,7 @@
-const USER_URL = 'https://geogram-coding.herokuapp.com/data/user'
-const LOGIN_URL = 'https://geogram-coding.herokuapp.com/login'
-const SIGNUP_URL = 'https://geogram-coding.herokuapp.com/signup'
+const BASE_URL = 'http://localhost:3003'
+const USER_URL = BASE_URL + '/data/user'
+const LOGIN_URL = BASE_URL + '/login'
+const SIGNUP_URL = BASE_URL + '/signup'
 import axios from 'axios'
 
 

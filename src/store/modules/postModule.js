@@ -12,6 +12,9 @@ export default {
 
     },
     getters: {
+            reverseFeed: state => {
+                return state.items.slice().reverse();
+            }
 
     },
 

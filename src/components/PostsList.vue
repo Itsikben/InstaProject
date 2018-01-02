@@ -14,15 +14,12 @@ export default {
 
     };
   },
-  created(){ 
-      this.$socket.emit('feedReq', 'will be user id soon')
-  },
   components: {
     PostPreview
   },
   computed:{
     feed(){
-      return this.$store.state.post.feed
+      return this.$store.state.post.feed.slice().reverse()
     }
   }
 };
