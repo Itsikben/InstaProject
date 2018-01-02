@@ -89,6 +89,7 @@ export default {
         pass: this.pass
       })
        this.$store.commit("setLogged", { isLogged:true });
+        this.$store.commit("setGuest", { isGuest:false });
     },
     signup() {
       this.$store
@@ -103,6 +104,7 @@ export default {
           pass: this.pass
       })
       this.$store.commit("setLogged", { isLogged:true });
+      this.$store.commit("setGuest", { isGuest:false });
           this.$router.push("/");
           
         })

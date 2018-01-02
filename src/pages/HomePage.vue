@@ -3,7 +3,9 @@
 <section>
 
     <div v-if="isLogged">
+     
        <add-photo></add-photo>
+      
         <button @click="isMapShow = !isMapShow">map shoe toggel</button>
         <followers-list></followers-list>
         <posts-map  :isMapShow="isMapShow" v-if='isMapShow'></posts-map>
@@ -56,4 +58,6 @@ export default {
   }
 };
 </script>
+
+
 

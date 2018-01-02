@@ -19,6 +19,9 @@ export default {
     },
 
     mutations: {
+        clearFeed(state,feed){
+            state.feed = feed;
+        },
         updateFeed(state,{updateInfo}) {
              state.feed.splice(updateInfo.idx,1,updateInfo.post)
         },

@@ -3,9 +3,10 @@
       <router-link to="/" class="nav-txt">geogram</router-link>
       <!-- <router-link to="/DesignImg">DesignImg</router-link> -->
       <div class="left-container">
-      <router-link v-if="user" :to="{path: '/UserProfile/' + user._id}"><img src = "../imgs/profile.png" ></router-link>
-      <span v-if="user">Hello, <br>{{user.username}}</span>
-      <a class="log-out" @click="logout">Log out</a>
+      <router-link v-if="!isGuest"  :to="{path: '/UserProfile/' + user._id}"><img src = "../imgs/profile.png" ></router-link>
+      <span >Hello, <br>{{user.username}}</span>
+      <a  v-if="!isGuest" class="log-out" @click="logout">Log out</a>
+      <a  v-else class="log-out" @click="logout">Log in</a>
         </div>
   </nav>
 </template>
@@ -24,15 +25,21 @@ export default {
     },
     user() {
       return this.$store.state.user.user;
+    },
+    isGuest() {
+      return this.$store.state.user.isGuest;
     }
   },
   methods: {
     logout() {
-      if (this.$store.state.user.user){
+      if (this.$store.state.user.user & !this.$store.state.user.isGuest){
+        this.$store.commit("clearFeed",[]);
         this.$store.commit("setUser", { user: null });
+        this.$store.commit("setLogged", { isLogged:false });
+         this.$store.commit("setGuest", { isGuest:true });
         this.$router.push("/");
       } else {
-         this.$store.commit("setLogged", { isLogged:false });
+        this.$store.commit("setLogged", { isLogged:false });
         this.$router.push("/");
       }
       

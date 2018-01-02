@@ -6,6 +6,7 @@
          
         <div class="mapSection">
             <div class="main-map-page">
+              <h1>Cool, my friends on a map!!</h1>
                 <div id="map" ></div>
                         </div>
         </div>
@@ -43,7 +44,7 @@ export default {
         script.onload = () => {
           this.map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: 31.7767189, lng: 35.23452 },
-            zoom: 13
+            zoom: 8
           });
           PostMapService.initMap(this.map);
           resolve();
@@ -117,7 +118,18 @@ export default {
 
 <style scoped>
 #map {
-  height: 500px;
+  height: 600px;
+  
+}
+.main-map-page{
+  margin: 5%;
+  border: 5px solid salmon;
+  border-radius: 5px
+}
+.main-map-page h1 {
+    background-color: coral;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium';
 }
 
 html,
