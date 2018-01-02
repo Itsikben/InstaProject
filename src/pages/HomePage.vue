@@ -2,7 +2,7 @@
 <template>
 <section>
 
-    <div v-if="isLogged">
+    <div v-show="isLogged">
        <add-photo></add-photo>
         <button @click="isMapShow = !isMapShow">map shoe toggel</button>
         <followers-list></followers-list>
@@ -10,7 +10,7 @@
         <posts-list v-else></posts-list>
     </div>
     <!-- <div class="loggin" v-else> -->
-      <pre-loggin v-else></pre-loggin>
+      <pre-loggin v-show ="!isLogged"></pre-loggin>
     
     </section>
 </template>

@@ -56,7 +56,7 @@
       <p class="subtitle is-5">Already have an account?<a @click="toggleSignUp"> Log in</a></p>
       </form>
       <!-- <button>Forgot password?</button> -->
-       <button @click.prevent="guestEnters">enter as guest</button><br>
+       <button @click.prevent="guestEnters">Try Me!!!</button><br>
 
       <!-- <img src="https://media.istockphoto.com/photos/dog-in-the-city-park-picture-id505823546"> -->
   </section>
@@ -103,7 +103,12 @@ export default {
         .catch(err => console.log(err));
     },
     guestEnters() {
-      this.$store.dispatch("guestEnters")
+      this.username = 'guest';
+      this.pass = '123456';
+      this.$store.dispatch("login", {
+        username: this.username,
+        pass: this.pass
+      })
     }
   }
 };

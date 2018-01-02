@@ -16,7 +16,8 @@ export default {
     };
   },
   created(){ 
-      this.$socket.emit('feedReq', 'will be user id soon')
+      console.log('feed in PostList > created',this.feed);
+            this.$socket.emit('feedReq', 'will be user id soon');
   },
   components: {
     PostPreview
