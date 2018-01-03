@@ -1,7 +1,7 @@
 <template>
   <nav>
       <router-link to="/" class="nav-txt">geogram</router-link>
-      <router-link to="/DesignImg"><i class="fa fa-camera" aria-hidden="true"></i></router-link>
+      <router-link to="/DesignImg" class="nav-txt"><i class="fa fa-camera" aria-hidden="true">img</i></router-link>
       <div class="left-container">
       <router-link v-if="!isGuest"  :to="{path: '/UserProfile/' + user._id}"><img src = "../imgs/profile.png" ></router-link>
       <span >Hello, <br>{{user.username}}</span>
@@ -75,7 +75,7 @@ img {
 nav {
   margin: 0;
   height: 50px;
-  background: rgb(221, 211, 211);
+  background: rgb(248, 214, 251);
   border-bottom: 1px solid #e6e6e6;
   position: fixed;
   width: 100%;

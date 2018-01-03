@@ -10,8 +10,14 @@
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
       <img :src="story.img">
+<<<<<<< HEAD
       <router-link :to="'/UserProfile/' + story._id">Details</router-link>
       <!-- <button @click="deletePost()">del</button> -->
+=======
+   
+      <router-link :to="'/UserProfile/Post/' + story._id">Details</router-link>
+     
+>>>>>>> 34ba8ddb9bd13f6c9df4052d97cc88a6f20f9c5b
     </div>
     <div class="post-statistics">
       <div>
@@ -68,6 +74,9 @@ export default {
     },
     isLiked(){
       return this.story.likes.indexOf(this.$store.state.user.user._id) !== -1
+    }, 
+    feed(){
+      return this.$store.state.post.feed;
     }
   },
   methods: {
