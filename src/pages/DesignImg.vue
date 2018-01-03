@@ -26,7 +26,7 @@
                     <label class="label">Descriptioמ..</label>
                     <input class="input" type="text" placeholder="add text" v-model="text">
                 </div>
-               <div> <a @click="sendPost" class="button is-danger is-outlined">Post it baby!</a></div>
+               <div class="send-button"> <a @click="sendPost" class="button is-danger is-outlined">Post it baby!</a></div>
                   
             </div>
       
@@ -145,7 +145,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .active {
     display: none;
 }
@@ -172,6 +172,10 @@ export default {
 }
 #video {
     height: auto;
+}
+.send-button {
+    margin: auto;
+    padding: 2%;
 }
 
 body {
