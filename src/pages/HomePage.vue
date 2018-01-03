@@ -15,7 +15,7 @@
         <posts-list v-else></posts-list>
     </div>
     <!-- <div class="loggin" v-else> -->
-      <pre-loggin v-else></pre-loggin>
+      <pre-loggin v-show ="!isLogged"></pre-loggin>
     
     </section>
 </template>

@@ -1,27 +1,25 @@
 <template>
   <section>
 
-<button @click="filter1">filter1</button>
-<button @click="filter2">filter2</button>
-<button @click="filter3">filter3</button>
-<button @click="takeNewPic">take anther pic</button>
+    <div class="camera-box">
+        <video  id="video"  v-bind:class="{ active: !showVideo }" width="640" height="480" autoplay></video>
+        <button id="snap" @click="snap">Snap Photo</button>
+        <canvas v-bind:class="{ active: showVideo }" id="canvas" width="640" height="480"></canvas>
 
-    <video  id="video"  v-bind:class="{ active: !showVideo }" width="640" height="480" autoplay></video>
-    <button id="snap" @click="snap">Snap Photo</button>
-    <canvas v-bind:class="{ active: showVideo }" id="canvas" width="640" height="480"></canvas>
-    <button @click="saveImg">save</button>
-    <div class="add-img">
-   <!-- <a href="#" id="upload_widget_opener" @click="add">add photo</a> -->
-    <div class="control">
-      <h1>add new post</h1>
-    <input class="input" type="text" placeholder="Title" v-model="title">
-    <input class="input" type="text" placeholder="add text" v-model="text">
-   
-    <a class="button is-dark" @click="sendPost">post!</a>
-    <!-- <input type="file" accept="image/*" capture="camera" /> -->
-    <router-link :to="submitUrl"></router-link>
-  </div>
-  </div>
+            <button @click="filter1">filter1</button>
+            <button @click="filter2">filter2</button>
+            <button @click="filter3">filter3</button>
+            <button @click="takeNewPic">take anther pic</button>
+            <button @click="saveImg">save</button>
+        <div class="add-img">
+            <div class="control">
+                <input class="input" type="text" placeholder="Title" v-model="title">
+                <input class="input" type="text" placeholder="add text" v-model="text">
+                <a class="button is-dark" @click="sendPost">post!</a>
+                
+            </div>
+        </div>
+    </div>
   </section>
 </template>
 

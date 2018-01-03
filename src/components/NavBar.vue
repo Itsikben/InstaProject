@@ -75,7 +75,7 @@ img {
 nav {
   margin: 0;
   height: 50px;
-  background: rgb(221, 211, 211);
+  background: rgb(248, 214, 251);
   border-bottom: 1px solid #e6e6e6;
   position: fixed;
   width: 100%;
