@@ -83,14 +83,14 @@ export default {
 
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(
-            story.geoLocation.lat,
-            story.geoLocation.long
+            story.geolocation.lat,
+            story.geolocation.lng
           ),
           map: this.map,
           title: story.postText,
           icon: {
-            url: story.imgUrl,
-            scaledSize: new google.maps.Size(70, 50)
+            url: story.img,
+            scaledSize: new google.maps.Size(50, 50)
           }
         });
 
