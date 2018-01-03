@@ -16,11 +16,11 @@ export default new Router({
       name: 'HomePage',
       component: HomePage
     },
-    {
-      path: '/UserProfile/:storyId',
-      name: 'DisplyStory',
-      component: DisplyStory
-    },
+    // {
+    //   path: '/UserProfile/:storyId',
+    //   name: 'DisplyStory',
+    //   component: DisplyStory
+    // },
     {
       path: '/UserProfile/:userId',
       name: 'UserProfile',
