@@ -9,10 +9,10 @@
 
 <div class="head"><p> gallery</p></div>
      <div class="photos-holder">
-      <div class="card" v-for="post in postToDisplay" :key='post.id' >
+      <div class="card animated fadeInRight" v-for="post in postToDisplay" :key='post.id' >
         {{post.title}} 
         
-        <div class="card-image animated fadeInRight">
+        <div class="card-image">
           <figure class="image is-4by3">
             <img :src="`${post.img}`" alt="Placeholder image">
             

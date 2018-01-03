@@ -1,7 +1,7 @@
 <template>
   <section>
 
-    <div class="camera-box">
+    <div class="camera-box animated jackInTheBox" v-bind:class="{ close: this.isClose }" leave-active-class="animated jackInTheBox">
         <video  id="video"  v-bind:class="{ active: !showVideo }" width="640" height="480" autoplay></video>
         
         <canvas v-bind:class="{ active: showVideo }" id="canvas" width="640" height="480"></canvas>
@@ -52,7 +52,8 @@ export default {
       showVideo: true,
       baseImage: null,
       snaped:false,
-      isSaveImg:false
+      isSaveImg:false,
+      isClose:false
     };
   },
   mounted() {
@@ -108,6 +109,9 @@ export default {
         post.geolocation = loc;
         this.$store.dispatch(SAVE_POST, { post });
       });
+        this.$router.push("/");
+        this.isClose = true
+
     },
     snap() {
     this.snaped = true
@@ -159,7 +163,6 @@ export default {
     padding: 15px;
     margin-top: 3%;
     margin-bottom: 3%;
-    max-height: 600px;
 }
 #canvas {
     width: 100%;
@@ -174,8 +177,13 @@ export default {
     height: auto;
 }
 .send-button {
+    display: flex;
+    justify-content: center;
     margin: auto;
     padding: 2%;
+}
+.close {
+    animated: zoomInDown;
 }
 
 body {
