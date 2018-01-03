@@ -53,6 +53,11 @@ export default {
         }
         this.$store.dispatch(SAVE_POST, {post});
       },
+
+      setRundomGeolocation(){
+        var lat = Math.rundom()+31;
+        var lng = Math.rundom()*2+32;
+      }
     //   getMyLocation() {
     // // return new Promise((resolve, reject) => {
     //     if (navigator.geolocation) {

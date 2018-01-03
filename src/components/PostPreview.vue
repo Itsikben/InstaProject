@@ -4,12 +4,13 @@
       <div class="instagram">
         <img  src="https://instagram.fhfa2-1.fna.fbcdn.net/t51.2885-19/s150x150/25012742_296524800856734_2015366146122842112_n.jpg" class="user-img"/>
       </div>
-      <span class="user-name" @click="showProfile">{{story.username}}</span>
+      <span class="user-name" @click="showProfile">{{this.story.username}}</span>
     </div>
       <span class="story-title">{{story.title}}</span>
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
       <img :src="story.img">
+      <router-link :to="'/UserProfile/' + story._id">Details</router-link>
       <!-- <button @click="deletePost()">del</button> -->
     </div>
     <div class="post-statistics">

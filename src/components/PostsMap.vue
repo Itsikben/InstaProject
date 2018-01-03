@@ -63,7 +63,7 @@ export default {
       // console.log("self.map in rundermap", self.map);
       this.feed.forEach(story => {
         // console.log(story);
-
+  if(!isNaN(story.geolocation.lat) &&!isNaN(story.geolocation.lng) ){
         var contentString = `<div id="content"> 
           <div id="siteNotice"> 
           </div>
@@ -98,6 +98,7 @@ export default {
           infowindow.open(map, marker);
         });
         markers.push(marker);
+  }
       });
             var markerCluster = new MarkerClusterer(self.map, markers, {
               imagePath:
