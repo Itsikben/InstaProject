@@ -5,8 +5,13 @@
     <div v-if="isLogged">
      
        <add-photo></add-photo>
-      
-        <button @click="isMapShow = !isMapShow">map shoe toggel</button>
+      <div class="tabs is-centered">
+  <ul>
+    <li><a  @click="isMapShow = true" class="is-active" >map</a></li>
+    <li><a @click="isMapShow=false" >feed</a></li>
+  </ul>
+</div>
+
         <followers-list></followers-list>
         <posts-map  :isMapShow="isMapShow" v-if='isMapShow'></posts-map>
         <posts-list v-else></posts-list>
@@ -24,14 +29,14 @@ import FollowersList from "../components/FollowersList";
 import PostService from "../services/PostService.js";
 import PostsList from "../components/PostsList";
 import PostsMap from "../components/PostsMap";
-import { LOAD_POSTS } from "../store/modules/postModule";
+// import { LOAD_POSTS } from "../store/modules/postModule";
 import AddPhoto from "../components/AddPhoto";
 
 export default {
   name: "HomePage",
   data() {
     return {
-        isMapShow: false,
+        isMapShow: false
     };
   },
   created() {
@@ -48,6 +53,7 @@ export default {
     logout(){
       this.$store.commit('setUser',{user: null})
     }
+    
   },
   components: {
     PostsList,

@@ -4,7 +4,7 @@
       <div class="instagram">
         <img  src="https://instagram.fhfa2-1.fna.fbcdn.net/t51.2885-19/s150x150/25012742_296524800856734_2015366146122842112_n.jpg" class="user-img"/>
       </div>
-      <span class="user-name">{{story.username}}</span>
+      <span class="user-name" @click="showProfile">{{story.username}}</span>
     </div>
       <span class="story-title">{{story.title}}</span>
     <div class="post-img" @dblclick="like">
@@ -24,12 +24,12 @@
       <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
     </div>
     <div class="post-content">
-      <span class="user-name">{{story.username}}:</span> 
+      <span class="user-name" >{{story.username}}:</span> 
       <span>{{story.text}}</span>     
     </div>
     <div class="post-comments">
       <div class="comment" v-for="(comment,index) in comments" :key="index">
-        <span class="user-name">{{comment.username}}: </span> 
+        <span class="user-name" >{{comment.username}}: </span> 
         <span>{{comment.text}}</span>     
       </div>
     </div>
@@ -69,9 +69,6 @@ export default {
       return this.story.likes.indexOf(this.$store.state.user.user._id) !== -1
     }
   },
-  created() {
-    this.$store.dispatch({ type: "loadPosts" });
-  },
   methods: {
     addComment() {
       var commentInfo = {
@@ -104,6 +101,10 @@ export default {
     },
     deletePost(postId) {
       PostService.deletePost();
+    },
+    showProfile() {
+      this.$router.push("/UserProfile/"+ this.story.userId)
+      
     }
   }
 };
@@ -227,6 +228,9 @@ hr {
     #d6249f 60%,
     #285aeb 90%
   );
+}
+.post-header .user-name :hover {
+  color: red;
 }
 </style>
 

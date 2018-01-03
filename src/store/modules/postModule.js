@@ -31,11 +31,12 @@ export default {
             state.feed.push(...feed)
         },
         setPosts(state, posts) {
+           
             state.posts = posts;
         },
-        removePost(state, payload) {
-            state.posts = state.posts.filter(post => post.id !== payload.id);
-        },
+        // removePost(state, payload) {
+        //     state.posts = state.posts.filter(post => post.id !== payload.id);
+        // },
         setCurrentPost(state, post) {
             state.currPost = post
         }
@@ -83,17 +84,17 @@ export default {
         //             context.commit('setPosts', []);
         //         })
         // },
-        [DELETE_POST](store, payload) {
-            return PostService.deletePost(payload.id)
-                .then(_ => {
-                    store.commit({ type: 'removePost', id: payload.id })
-                    console.log('post deleted id:', payload.id);
+        // [DELETE_POST](store, payload) {
+        //     return PostService.deletePost(payload.id)
+        //         .then(_ => {
+        //             store.commit({ type: 'removePost', id: payload.id })
+        //             console.log('post deleted id:', payload.id);
 
-                })
-                .catch(err => {
-                    console.log('post ***wasnt*** deleted id:', payload.id);
-                })
-        },
+        //         })
+        //         .catch(err => {
+        //             console.log('post ***wasnt*** deleted id:', payload.id);
+        //         })
+        // },
         [SAVE_POST](store, payload) {
             console.log(payload)
             return PostService.savePost(payload.post)

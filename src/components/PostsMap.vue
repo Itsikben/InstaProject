@@ -6,7 +6,7 @@
          
         <div class="mapSection">
             <div class="main-map-page">
-              <h1>Cool, my friends on a map!!</h1>
+             
                 <div id="map" ></div>
                         </div>
         </div>
@@ -82,9 +82,10 @@ export default {
           ),
           map: this.map,
           title: story.postText,
+          animation: google.maps.Animation.DROP,
           icon: {
             url: story.img,
-            scaledSize: new google.maps.Size(70, 50),
+            scaledSize: new google.maps.Size(70, 70),
           }
         });
 
@@ -122,12 +123,12 @@ export default {
   
 }
 .main-map-page{
-  margin: 5%;
-  border: 5px solid salmon;
+  margin: 3%;
+  border: 1px solid gray;
   border-radius: 5px
 }
 .main-map-page h1 {
-    background-color: coral;
+    background-color: gray;
     font-size: 25px;
     font-family: 'Franklin Gothic Medium';
 }

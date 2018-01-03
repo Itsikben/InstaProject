@@ -6,10 +6,12 @@
     </div>
   </div>
 </section>
+
 <div class="head"><p> gallery</p></div>
      <div class="photos-holder">
       <div class="card" v-for="post in postToDisplay" :key='post.id' >
         {{post.title}} 
+        
         <div class="card-image animated fadeInRight">
           <figure class="image is-4by3">
             <img :src="`${post.img}`" alt="Placeholder image">
@@ -29,34 +31,38 @@
 <script>
 import { LOAD_POSTS } from "../store/modules/postModule";
 import postService from "../services/PostService";
+import swal from 'sweetalert';
 export default {
   name: "UserGallery",
   data() {
     return {
       user: null
+      
     };
   },
   created() {
+    debugger;
     var userId = this.$route.params.userId
     this.$store
       .dispatch(LOAD_POSTS, {userId})
+      
   },
   computed:{
     postToDisplay() {
      return this.$store.state.post.posts
     }
   },
-  watch: {
-    '$route' (to, from) {
-      var userId = this.$route.params.userId;
-      this.$store
-        .dispatch(LOAD_POSTS, userId)
-        .then(posts => console.log("posts:", posts))
-        .catch(err => {
-          this.$router.push("/");
-        });
-    }
-  }
+  // watch: {
+  //   '$route' (to, from) {
+  //     var userId = this.$route.params.userId;
+  //     this.$store
+  //       .dispatch(LOAD_POSTS, userId)
+  //       .then(posts => console.log("posts:", posts))
+  //       .catch(err => {
+  //         this.$router.push("/");
+  //       });
+  //   }
+  // }
   // computed: {
   //   postToDisplay() {
   //       return this.$store.actions.postToDisplay
@@ -78,8 +84,9 @@ export default {
   flex-wrap: wrap;
   justify-content: space-around;
   margin: auto;
-  border: 1px solid rgb(158, 196, 211);
-  border-radius: 5px;
+  /* border: 1px solid rgb(158, 196, 211);
+  border-radius: 5px; */
+  margin-bottom: 5%;
 }
 .card {
   max-width: 300px;
@@ -89,10 +96,10 @@ export default {
   border-radius: 25px
 }
 .head{
-  background-color: brown;
-   max-width: 80%;
-   margin: auto;
-  font-family: 'Franklin Gothic Medium';
+  border-bottom: 1px solid gray;
+  max-width: 80%;
+  margin: auto;
+  margin-bottom: 3%;
 }
 </style>
 
