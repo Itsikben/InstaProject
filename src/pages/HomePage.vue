@@ -3,8 +3,6 @@
 <section>
 
     <div v-if="isLogged">
-     
-       <add-photo></add-photo>
       <div class="tabs is-centered">
   <ul>
     <li><a  @click="isMapShow = true" class="is-active" >map</a></li>
@@ -30,7 +28,7 @@ import PostService from "../services/PostService.js";
 import PostsList from "../components/PostsList";
 import PostsMap from "../components/PostsMap";
 // import { LOAD_POSTS } from "../store/modules/postModule";
-import AddPhoto from "../components/AddPhoto";
+
 
 export default {
   name: "HomePage",
@@ -59,7 +57,6 @@ export default {
     PostsList,
     FollowersList,
     PreLoggin,
-    AddPhoto,
     PostsMap,
   }
 };
