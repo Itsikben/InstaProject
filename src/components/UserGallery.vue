@@ -41,7 +41,7 @@ export default {
     };
   },
   created() {
-    debugger;
+     console.log('galery')
     var userId = this.$route.params.userId
     this.$store
       .dispatch(LOAD_POSTS, {userId})

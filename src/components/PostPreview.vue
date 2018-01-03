@@ -4,7 +4,7 @@
       <div class="instagram">
         <img  src="https://instagram.fhfa2-1.fna.fbcdn.net/t51.2885-19/s150x150/25012742_296524800856734_2015366146122842112_n.jpg" class="user-img"/>
       </div>
-      <span class="user-name" @click="showProfile">{{story.username}}</span>
+      <span class="user-name" @click="showProfile">{{this.story.username}}</span>
     </div>
       <span class="story-title">{{story.title}}</span>
     <div class="post-img" @dblclick="like">
@@ -21,17 +21,17 @@
           <i v-else class="fa fa-heart fa-2x red" aria-hidden="true"></i>
         </span> 
         <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
-        <p>{{story.likes.length}}</p>
+        <p class="likesnumber">{{story.likes.length}}</p>
       </div>
       <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
     </div>
     <div class="post-content">
-      <span class="user-name" >{{story.username}}:</span> 
+      <span class="sub-user-name" >{{story.username}}:</span> 
       <span>{{story.text}}</span>     
     </div>
     <div class="post-comments">
       <div class="comment" v-for="(comment,index) in comments" :key="index">
-        <span class="user-name" >{{comment.username}}: </span> 
+        <span class="sub-user-name" >{{comment.username}}: </span> 
         <span>{{comment.text}}</span>     
       </div>
     </div>
@@ -147,6 +147,7 @@ export default {
   border: 1px solid #e6e6e6;
   max-width: 615px;
   margin-bottom: 60px;
+  background-color: white;
 }
 hr {
   display: block;
@@ -194,6 +195,10 @@ hr {
   padding: 10px;
 }
 .user-name {
+  font-size: 1.8em;
+  font-weight: 600;
+}
+.sub-user-name{
   font-weight: 600;
 }
 .user-img {
@@ -236,6 +241,22 @@ hr {
 }
 .post-header .user-name :hover {
   color: red;
+}
+.likesnumber{
+  margin-right: 60px;
+}
+
+@media (max-width: 550px) {
+  
+  .user-name {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.sub-user-name{
+  font-weight: 400;
+}
+
+
 }
 </style>
 

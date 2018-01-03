@@ -60,7 +60,17 @@ export default {
     PostsMap,
   }
 };
+
+
 </script>
+
+<style scoped>
+
+ul{
+  background-color: #f9f9f9;
+}
+
+</style>
 
 
 

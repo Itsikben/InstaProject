@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import UserProfile from '../pages/UserProfile'
 import DesignImg from '../pages/DesignImg'
 import HomePage from '../pages/HomePage'
-import PostDetails from '../pages/PostDetails'
+import DisplyStory from '../pages/DisplayStory'
+
 
 Vue.use(Router)
 
@@ -16,14 +17,14 @@ export default new Router({
       component: HomePage
     },
     {
+      path: '/UserProfile/:storyId',
+      name: 'DisplyStory',
+      component: DisplyStory
+    },
+    {
       path: '/UserProfile/:userId',
       name: 'UserProfile',
       component: UserProfile
-    },
-    {
-      path: '/UserProfile/Post/:postId',
-      name: 'PostDetails',
-      component: PostDetails
     },
     {
       path: '/DesignImg',

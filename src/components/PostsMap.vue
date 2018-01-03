@@ -6,7 +6,6 @@
          
         <div class="mapSection">
             <div class="main-map-page">
-             
                 <div id="map" ></div>
                         </div>
         </div>
@@ -48,7 +47,7 @@ export default {
         mapScript.onload = () => {
           this.map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: 31.7767189, lng: 35.23452 },
-            zoom: 8
+            zoom: 13
           });
           PostMapService.initMap(this.map);
           // console.log("map created");
@@ -61,49 +60,51 @@ export default {
       // var map = document.getElementById("map");
       console.log("feed in PostsMap > runderMarker", this.feed);
       var self = this;
+      console.log({self})
       // console.log("self.map in rundermap", self.map);
       this.feed.forEach(story => {
         // console.log(story);
-
-        var contentString = `<div id="content"> 
+        if (!isNaN(story.geolocation.lat) && !isNaN(story.geolocation.lng)) {
+          var contentString = `<div id="content"> 
           <div id="siteNotice"> 
           </div>
           <h1 id="firstHeading" class="firstHeading">${story.title}</h1> 
           <div id="bodyContent">
-          <img src="${story.imgUrl}">
-          <p>${story.postText}</p>
+          <img src="${story.img}">
+          <p>${story.text}</p>
           <p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194"> 
           https://en.wikipedia.org/w/index.php?title=Uluru</a> 
           (last visited {{story.createdAt}}).</p>
           </div>
           </div>`;
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(
-            story.geolocation.lat,
-            story.geolocation.lng,
-          ),
-          map: this.map,
-          title: story.postText,
-          animation: google.maps.Animation.DROP,
-          icon: {
-            url: story.img,
-            scaledSize: new google.maps.Size(70, 70),
-          }
-        });
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
 
-        marker.addListener("click", function() {
-          infowindow.open(map, marker);
-        });
-        markers.push(marker);
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(
+              story.geolocation.lat,
+              story.geolocation.lng
+            ),
+            map: this.map,
+            title: story.title,
+            icon: {
+              url: story.img,
+              scaledSize: new google.maps.Size(50, 50)
+            }
+          });
+
+          marker.addListener("click", function() {
+            infowindow.open(map, marker);
+          });
+          markers.push(marker);
+        }
       });
-            var markerCluster = new MarkerClusterer(self.map, markers, {
-              imagePath:
-                "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
-            });
+      var markerCluster = new MarkerClusterer(self.map, markers, {
+        imagePath:
+          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+      });
     }
   },
   components: {},
@@ -118,18 +119,7 @@ export default {
 
 <style scoped>
 #map {
-  height: 600px;
-  
-}
-.main-map-page{
-  margin: 3%;
-  border: 1px solid gray;
-  border-radius: 5px
-}
-.main-map-page h1 {
-    background-color: gray;
-    font-size: 25px;
-    font-family: 'Franklin Gothic Medium';
+  height: 900px;
 }
 
 html,
