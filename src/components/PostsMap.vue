@@ -60,50 +60,51 @@ export default {
       // var map = document.getElementById("map");
       console.log("feed in PostsMap > runderMarker", this.feed);
       var self = this;
+      console.log({self})
       // console.log("self.map in rundermap", self.map);
       this.feed.forEach(story => {
         // console.log(story);
-  if(!isNaN(story.geolocation.lat) &&!isNaN(story.geolocation.lng) ){
-        var contentString = `<div id="content"> 
+        if (!isNaN(story.geolocation.lat) && !isNaN(story.geolocation.lng)) {
+          var contentString = `<div id="content"> 
           <div id="siteNotice"> 
           </div>
           <h1 id="firstHeading" class="firstHeading">${story.title}</h1> 
           <div id="bodyContent">
-          <img src="${story.imgUrl}">
-          <p>${story.postText}</p>
+          <img src="${story.img}">
+          <p>${story.text}</p>
           <p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194"> 
           https://en.wikipedia.org/w/index.php?title=Uluru</a> 
           (last visited {{story.createdAt}}).</p>
           </div>
           </div>`;
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
 
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(
-            story.geolocation.lat,
-            story.geolocation.lng
-          ),
-          map: this.map,
-          title: story.postText,
-          icon: {
-            url: story.img,
-            scaledSize: new google.maps.Size(50, 50)
-          }
-        });
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(
+              story.geolocation.lat,
+              story.geolocation.lng
+            ),
+            map: this.map,
+            title: story.title,
+            icon: {
+              url: story.img,
+              scaledSize: new google.maps.Size(50, 50)
+            }
+          });
 
-        marker.addListener("click", function() {
-          infowindow.open(map, marker);
-        });
-        markers.push(marker);
-  }
+          marker.addListener("click", function() {
+            infowindow.open(map, marker);
+          });
+          markers.push(marker);
+        }
       });
-            var markerCluster = new MarkerClusterer(self.map, markers, {
-              imagePath:
-                "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
-            });
+      var markerCluster = new MarkerClusterer(self.map, markers, {
+        imagePath:
+          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+      });
     }
   },
   components: {},

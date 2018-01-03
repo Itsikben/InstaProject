@@ -10,14 +10,9 @@
     <div class="post-img" @dblclick="like">
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
       <img :src="story.img">
-<<<<<<< HEAD
-      <router-link :to="'/UserProfile/' + story._id">Details</router-link>
-      <!-- <button @click="deletePost()">del</button> -->
-=======
    
       <router-link :to="'/UserProfile/Post/' + story._id">Details</router-link>
      
->>>>>>> 34ba8ddb9bd13f6c9df4052d97cc88a6f20f9c5b
     </div>
     <div class="post-statistics">
       <div>
@@ -26,17 +21,17 @@
           <i v-else class="fa fa-heart fa-2x red" aria-hidden="true"></i>
         </span> 
         <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
-        <p>{{story.likes.length}}</p>
+        <p class="likesnumber">{{story.likes.length}}</p>
       </div>
       <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
     </div>
     <div class="post-content">
-      <span class="user-name" >{{story.username}}:</span> 
+      <span class="sub-user-name" >{{story.username}}:</span> 
       <span>{{story.text}}</span>     
     </div>
     <div class="post-comments">
       <div class="comment" v-for="(comment,index) in comments" :key="index">
-        <span class="user-name" >{{comment.username}}: </span> 
+        <span class="sub-user-name" >{{comment.username}}: </span> 
         <span>{{comment.text}}</span>     
       </div>
     </div>
@@ -152,6 +147,7 @@ export default {
   border: 1px solid #e6e6e6;
   max-width: 615px;
   margin-bottom: 60px;
+  background-color: white;
 }
 hr {
   display: block;
@@ -199,6 +195,10 @@ hr {
   padding: 10px;
 }
 .user-name {
+  font-size: 1.8em;
+  font-weight: 600;
+}
+.sub-user-name{
   font-weight: 600;
 }
 .user-img {
@@ -241,6 +241,22 @@ hr {
 }
 .post-header .user-name :hover {
   color: red;
+}
+.likesnumber{
+  margin-right: 60px;
+}
+
+@media (max-width: 550px) {
+  
+  .user-name {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.sub-user-name{
+  font-weight: 400;
+}
+
+
 }
 </style>
 

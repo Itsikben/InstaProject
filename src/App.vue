@@ -1,28 +1,24 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
-    
-    <div class="space-container">
-
-      <router-view/>
-    </div>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
-import postService from './services/PostService'
+import postService from "./services/PostService";
 import navBar from "./components/NavBar.vue";
 export default {
   name: "app",
   components: {
     navBar
-  },
+  }
 };
 </script>
 
 <style>
-.space-container{
-  padding-top:50px;
+.space-container {
+  padding-top: 50px;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
