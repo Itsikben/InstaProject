@@ -1,24 +1,35 @@
 <template>
   <section>
 
-    <div class="camera-box">
+    <div class="camera-box animated jackInTheBox" v-bind:class="{ close: this.isClose }" leave-active-class="animated jackInTheBox">
         <video  id="video"  v-bind:class="{ active: !showVideo }" width="640" height="480" autoplay></video>
-        <button id="snap" @click="snap">Snap Photo</button>
+        
         <canvas v-bind:class="{ active: showVideo }" id="canvas" width="640" height="480"></canvas>
-
-            <button @click="filter1">filter1</button>
-            <button @click="filter2">filter2</button>
-            <button @click="filter3">filter3</button>
-            <button @click="takeNewPic">take anther pic</button>
-            <button @click="saveImg">save</button>
-        <div class="add-img">
-            <div class="control">
-                <input class="input" type="text" placeholder="Title" v-model="title">
-                <input class="input" type="text" placeholder="add text" v-model="text">
-                <a class="button is-dark" @click="sendPost">post!</a>
-                
+        <div v-if="this.snaped" class="filter-console">
+            <div class="buttons has-addons is-centered">
+                <span   @click="filter1" class="button">blur</span>
+                <span @click="filter2" class="button">retro</span>
+                <span @click="filter3" class="button">brighting</span>
             </div>
         </div>
+        <div class="filter-console">
+            <a class="button is-rounded" @click="takeNewPic"><i class="fa fa-undo" aria-hidden="true"></i></a>
+            <a class="button is-rounded"  id="snap" @click="snap"><i class="fa fa-camera" aria-hidden="true"></i></a>
+            <a class="button is-rounded"  @click="saveImg">save</a>
+        </div>
+            <div v-if="this.isSaveImg" class="control">
+                <div class="field">
+                <label class="label">Give a title..</label>
+                <input class="input" type="text" placeholder="Title" v-model="title">
+                </div>
+                 <div class="field">
+                    <label class="label">Descriptioמ..</label>
+                    <input class="input" type="text" placeholder="add text" v-model="text">
+                </div>
+               <div class="send-button"> <a @click="sendPost" class="button is-danger is-outlined">Post it baby!</a></div>
+                  
+            </div>
+      
     </div>
   </section>
 </template>
@@ -39,7 +50,10 @@ export default {
       context: null,
       video: null,
       showVideo: true,
-      baseImage: null
+      baseImage: null,
+      snaped:false,
+      isSaveImg:false,
+      isClose:false
     };
   },
   mounted() {
@@ -95,13 +109,17 @@ export default {
         post.geolocation = loc;
         this.$store.dispatch(SAVE_POST, { post });
       });
+        this.$router.push("/");
+        this.isClose = true
+
     },
     snap() {
-      this.showVideo = false;
-      this.context.filter = "none";
-      this.context.drawImage(video, 0, 0, 640, 480);
-      this.baseImage = new Image();
-      this.baseImage.src = this.canvas.toDataURL("image/png");
+    this.snaped = true
+    this.showVideo = false;
+    this.context.filter = "none";
+    this.context.drawImage(video, 0, 0, 640, 480);
+    this.baseImage = new Image();
+    this.baseImage.src = this.canvas.toDataURL("image/png");
     },
     takeNewPic() {
       this.showVideo = true;
@@ -111,7 +129,7 @@ export default {
         console.log(blob);
         PostService.uploadImage(blob).then(res => {
           this.imgUrl = res;
-          console.log(this.imgUrl);
+          this.isSaveImg = true;
         });
       });
     },
@@ -131,26 +149,45 @@ export default {
 };
 </script>
 
-<style>
-.add-img img {
-  max-width: 150px;
-}
-.add-img {
-  max-width: 500px;
-  max-height: 250pxs;
-  border: solid cadetblue;
-  margin: auto;
-}
-.control h1 {
-  font-family: "Lucida Sans";
-  text-align: center;
-  background-color: chocolate;
-}
-.control a {
-  text-align: center;
-}
+<style scoped>
 .active {
-  display: none;
+    display: none;
+}
+.camera-box {
+    width: 95%;
+    max-width: 600px;
+    border: 1px solid gray;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+#canvas {
+    width: 100%;
+    height: 100%;
+    
+}
+.filter-console {
+    padding: 2%;
+    
+}
+#video {
+    height: auto;
+}
+.send-button {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 2%;
+}
+.close {
+    animated: zoomInDown;
+}
+
+body {
+    background-color:  whitesmoke;
 }
 </style>
 

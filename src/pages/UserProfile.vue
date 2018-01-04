@@ -1,7 +1,8 @@
 <template>
   <section>
-    
-    <user-details></user-details>
+    <div class="datials-box">
+      <user-details></user-details>
+    </div>
     <user-gallery></user-gallery>
   </section>
 </template>
@@ -31,6 +32,10 @@ export default {
 
 
 <style>
+.datials-box{
+    padding-top: 5%;
+}
+
 
 </style>
 
