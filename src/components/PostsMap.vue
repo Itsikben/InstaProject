@@ -69,13 +69,10 @@ export default {
           var contentString = `<div id="content"> 
           <div id="siteNotice"> 
           </div>
-          <h1 id="firstHeading" class="firstHeading">${story.title}</h1> 
+          <div id="firstHeading" class="firstHeading">${story.title}</div> 
           <div id="bodyContent">
           <img src="${story.img}">
-          <p>${story.text}</p>
-          <p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194"> 
-          https://en.wikipedia.org/w/index.php?title=Uluru</a> 
-          (last visited {{story.createdAt}}).</p>
+          <p class="storytext">${story.text}</p>
           </div>
           </div>`;
 
@@ -103,6 +100,7 @@ export default {
         }
       });
       var markerCluster = new MarkerClusterer(self.map, markers, {
+        maxZoom:13,
         imagePath:
           "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
       });
@@ -116,9 +114,7 @@ export default {
   }
 };
 </script>
-
-
-<style scoped>
+<style>
 #map {
   height: 80vh;
 }
@@ -132,11 +128,13 @@ export default {
     font-size: 25px;
     font-family: 'Franklin Gothic Medium';
 }
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+.firstHeading{
+   font-family: "Indie Flower", cursive;
+  font-size:2em;
+  font-weight: 600;
+  color: #003569;
+}
+.storytext{
+font-weight: 600;
 }
 </style>
