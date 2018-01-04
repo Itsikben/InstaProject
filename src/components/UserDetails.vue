@@ -91,15 +91,16 @@ export default {
   height: 100%;
 }
 .details-wind {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 .details-wind nav {
-  width: 100%;
+  width: 80%;
   border: solid gray 1px;
   padding: 10px;
+  max-width: 800px;
 }
 .details-place {
   width: 300px;
