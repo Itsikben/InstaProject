@@ -3,9 +3,9 @@
   <section>
     
     <form v-if="!signUpActive">
-<h5 class="subtitle is-5">Log in</h5>
+<h5 class="title is-5">Log in</h5>
       <div class="field">
-        <label class="label">Username</label>
+        <label class="label">User name</label>
            <div class="control has-icons-left has-icons-right">
               <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="username">
               <span class="icon is-small is-left">
@@ -28,7 +28,7 @@
     <form v-else>
       <h5 class="subtitle is-5">Sign up</h5>
       <div class="field">
-        <label class="label">Username</label>
+        <label class="label">User name</label>
            <div class="control has-icons-left has-icons-right">
               <input class="input is-success" type="text"  placeholder="User name/Email"  v-model="username">
               <span class="icon is-small is-left">
@@ -56,7 +56,7 @@
       <p class="subtitle is-5">Already have an account?<a @click="toggleSignUp"> Log in</a></p>
       </form>
       <!-- <button>Forgot password?</button> -->
-       <button @click.prevent="guestEnters">Try Me!!!</button><br>
+       <button @click.prevent="guestEnters">enter as geust</button><br>
 
       <!-- <img src="https://media.istockphoto.com/photos/dog-in-the-city-park-picture-id505823546"> -->
   </section>
@@ -125,14 +125,32 @@ export default {
 <style scoped>
 input {
   margin-top: 7px;
+  background-color: whitesmoke !important;
 }
 .sec-div {
   margin: auto;
+  color: #003569;
   padding: 5%;
-  border: 1px solid rgb(158, 196, 211);
+  border: 1px solid #e6e6e6;
   border-radius: 5px;
-  max-width: 400px;
-  background-color: #ffe8ff;
+  max-width: 500px;
+  background-color: white;
+}
+.label{
+  font-family: "Indie Flower", cursive;
+  font-size: 1.5em;
+  color: #003569;
+}.title{
+  font-family: "Indie Flower", cursive;
+  font-size:2em;
+  font-weight: 1200;
+  color: #003569;
+}
+.subtitle{
+  font-family: "Indie Flower", cursive;
+  font-size: 1.8em;
+  font-weight: 900;
+  color: #003569;
 }
 img {
   width: 100px;
@@ -141,30 +159,23 @@ img {
 }
 
 button {
-  margin: 5%;
-}
-button {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  color: #ffe8ff;
-  padding: 8px 20px;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#ffffff),
-    color-stop(0.5, #2316cc),
-    color-stop(0.5, #3541c4),
-    color-stop(0.65, #474dc4),
-    to(#264ba6)
-  );
-  border-radius: 10px;
-  border: 1px solid #949996;
-  box-shadow: 0px 1px 3px rgba(83, 79, 92, 0.5),
-    inset 0px 0px 5px rgba(49, 55, 168, 0.6);
-  text-shadow: 0px -1px 3px rgba(56, 49, 56, 0.8),
-    0px 1px 0px rgba(46, 97, 94, 0.3);
-}
+    box-shadow: rgb(240, 247, 250) 0px 1px 0px 0px;
+    background: linear-gradient(rgb(50, 1, 249) 50%, rgb(1, 154, 210) 100%);
+    border-radius: 5px;
+    border: 1px solid rgb(21, 143, 214);
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 58px;
+    text-decoration: none;
+    text-shadow: rgb(91, 97, 120) 0px -1px 0px;
+  }
+  button:hover {
+     background: linear-gradient( rgb(1, 154, 210) 100%, rgb(51, 1, 239) 50%);
+  }
 p a:hover {
   cursor: pointer;
 }

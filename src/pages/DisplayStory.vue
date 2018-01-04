@@ -1,17 +1,19 @@
 <template>
     <div v-if="story">
-        <h2>PostDetails</h2>
+        <div class="titlecontainer">
+          <router-link class="back" :to="'/'"><span> back</span></router-link>
+          </div>
         <section class="post">
     <div class="post-header">
       <div class="instagram">
         <img  src="https://instagram.fhfa2-1.fna.fbcdn.net/t51.2885-19/s150x150/25012742_296524800856734_2015366146122842112_n.jpg" class="user-img"/>
       </div>
-      <span class="user-name">{{story.username}}</span> 
+      <router-link v-if="!isGuest"  :to="{path: '/UserProfile/' + user._id}"><span class="user-name">{{story.username}}</span></router-link>
     </div>
     <div class="post-img">
       <!-- <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i> -->
       <img :src="this.story.img">
-      <router-link :to="'/'">back</router-link>
+      
     </div>
     <div class="post-statistics">
       <div>
@@ -85,6 +87,9 @@ export default {
     comments() {
       return this.story.comments;
     },
+    user() {
+      return this.$store.state.user.user;
+    },
     isLiked() {
       return this.story.likes.indexOf(this.$store.state.user.user._id) !== -1;
     }
@@ -133,6 +138,14 @@ export default {
 .red {
   color: #ed4956;
 }
+.titlecontainer {
+  /* display: flex; */
+  /* align-content: space-around; */
+  font-family: "Indie Flower", cursive;
+  font-size: 2em;
+  font-weight: 1200;
+  color: #003569;
+}
 .post-addcomment {
   font-size: 1.2em;
   display: flex;
@@ -159,6 +172,9 @@ export default {
   border: 1px solid #e6e6e6;
   max-width: 615px;
   margin-bottom: 60px;
+}
+.back {
+  position: right;
 }
 hr {
   display: block;

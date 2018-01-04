@@ -101,10 +101,10 @@ export default {
           markers.push(marker);
         }
       });
-      var markerCluster = new MarkerClusterer(self.map, markers, {
-        imagePath:
-          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
-      });
+      // var markerCluster = new MarkerClusterer(self.map, markers, {
+      //   imagePath:
+      //     "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+      // });
     }
   },
   components: {},

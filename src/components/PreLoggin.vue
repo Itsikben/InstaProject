@@ -1,11 +1,13 @@
 <template>
 <div class="s">
   <section>
+    <div class="flexcontainer">
     <div class="log-box">
     <login-box></login-box>
     </div>
     <div class="photoHolder">
      <img src=" http://res.cloudinary.com/dxdmd1v1z/image/upload/c_scale,e_blur_region:100,w_333/a_0/v1514365021/cover_ocosvz.jpg" alt="">
+    </div>
     </div>
   </section>
   </div>
@@ -28,13 +30,17 @@ export default {
   padding: 5%;
 }
 .photoHolder {
-  max-width: 60%;
+  max-width: 65%;
   transform: rotate(-12deg);
   margin: 5%; 
 }
 .log-box {
   min-width: 350px;
 }
+/* .flexcontainer{
+  display: flex;
+  flex-flow: column nowrap;
+} */
 </style>
 
 

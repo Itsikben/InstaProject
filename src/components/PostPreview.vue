@@ -11,7 +11,7 @@
       <i v-if="isLiked" class="fa fa-heart fa-5x" :class="likeAnimClass" aria-hidden="true"></i>
       <img :src="story.img">
    
-      <router-link :to="'/UserProfile/Post/' + story._id">Details</router-link>
+      <router-link :to="'/UserProfile/story/' + story._id">Details</router-link>
      
     </div>
     <div class="post-statistics">

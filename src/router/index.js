@@ -17,7 +17,7 @@ export default new Router({
       component: HomePage
     },
     {
-      path: '/UserProfile/:storyId',
+      path: '/UserProfile/story/:storyId',
       name: 'DisplyStory',
       component: DisplyStory
     },

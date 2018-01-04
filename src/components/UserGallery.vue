@@ -7,14 +7,16 @@
   </div>
 </section>
 
-<div class="head"><p> gallery</p></div>
+<div class="title"><p> gallery</p></div>
      <div class="photos-holder">
       <div class="card" v-for="post in postToDisplay" :key='post.id' >
         {{post.title}} 
         
         <div class="card-image animated fadeInRight">
           <figure class="image is-4by3">
+            <router-link :to="'/UserProfile/story/' + post._id">
             <img :src="`${post.img}`" alt="Placeholder image">
+            </router-link>
             
           </figure>
         </div>
@@ -23,7 +25,7 @@
           {{postToDisplay.postText}}
           <br>
         </div>
-      </div>
+      </div></router-link>
     </div>
   </section>
 </template>
@@ -88,6 +90,16 @@ export default {
   border-radius: 5px; */
   margin-bottom: 5%;
 }
+.title{
+  font-family: "Indie Flower", cursive;
+  font-size:2em;
+  font-weight: 1200;
+  color: #003569;
+  border-bottom: 1px solid gray;
+  max-width: 80%;
+  margin: auto;
+  margin-bottom: 3%;
+}
 .card {
   max-width: 300px;
   min-width: 250px;
@@ -95,12 +107,12 @@ export default {
   margin: 5px;
   border-radius: 25px
 }
-.head{
+/* .head{
   border-bottom: 1px solid gray;
   max-width: 80%;
   margin: auto;
   margin-bottom: 3%;
-}
+} */
 </style>
 
 
