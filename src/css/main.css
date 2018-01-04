@@ -1,12 +1,9 @@
 button:hover{
     cursor: pointer;
 }
+router-link:hover {
+    cursor: pointer;
+}
 body{
     background-color: whitesmoke;
-}
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
 }

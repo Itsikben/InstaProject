@@ -17,22 +17,22 @@
     </div>
     <div class="post-statistics">
       <div>
-        <!-- <span @click="toggleLike">
+         <span @click="toggleLike"> 
           <i v-if="!isLiked" class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
           <i v-else class="fa fa-heart fa-2x red" aria-hidden="true"></i>
-        </span>  -->
-        <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
+        </span>  
+        
         <p>{{story.likes.length}}</p>
       </div>
-      <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
+      <!-- <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i> -->
     </div>
     <div class="post-content">
-      <span class="user-name">sumbat </span> 
-      <span>sometimes you have to jump and build your wings on the way down..🌌</span>     
+      <span class="user-name">{{story.username}} </span> 
+      <span>{{story.text}}</span>     
     </div>
     <div class="post-comments">
       <div class="comment" v-for="(comment,index) in comments" :key="index">
-        <span class="user-name" >{{comment.username}}: </span> 
+        <span class="user-name" ><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i> {{comment.username}}: </span> 
         <span>{{comment.text}}</span>     
       </div>
     </div>

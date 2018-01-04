@@ -15,7 +15,6 @@
 
 
 <script>
-import PostMapService from "../services/PostMapService";
 import PostService from "../services/PostService";
 
 export default {
@@ -49,8 +48,6 @@ export default {
             center: { lat: 31.7767189, lng: 35.23452 },
             zoom: 7
           });
-          // PostMapService.initMap(this.map);
-          // console.log("map created");
           resolve();
         };
       });
@@ -100,7 +97,7 @@ export default {
         }
       });
       var markerCluster = new MarkerClusterer(self.map, markers, {
-        maxZoom:13,
+        maxZoom:21,
         imagePath:
           "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
       });
@@ -116,7 +113,7 @@ export default {
 </script>
 <style>
 #map {
-  height: 80vh;
+  height: 75vh;
 }
 .main-map-page{
   margin: 3%;

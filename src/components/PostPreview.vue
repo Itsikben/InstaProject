@@ -20,7 +20,6 @@
           <i v-if="!isLiked" class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
           <i v-else class="fa fa-heart fa-2x red" aria-hidden="true"></i>
         </span> 
-        <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
         <p class="likesnumber">{{story.likes.length}}</p>
       </div>
       <!-- <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i> -->
@@ -31,7 +30,7 @@
     </div>
     <div class="post-comments">
       <div class="comment" v-for="(comment,index) in comments" :key="index">
-        <span class="sub-user-name" >{{comment.username}}: </span> 
+        <span class="sub-user-name" ><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i> {{comment.username}}: </span> 
         <span>{{comment.text}}</span>     
       </div>
     </div>
@@ -166,6 +165,7 @@ hr {
 .comment {
   padding: 0;
   margin-bottom: 10px;
+  font-size: 1.2em;
 }
 .post-createdtime {
   color: gray;
@@ -198,6 +198,9 @@ hr {
 .user-name {
   font-size: 1.8em;
   font-weight: 600;
+}
+.user-name:hover{
+  cursor: pointer;
 }
 .sub-user-name{
   font-weight: 600;
