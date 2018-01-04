@@ -47,7 +47,7 @@ export default {
         mapScript.onload = () => {
           this.map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: 31.7767189, lng: 35.23452 },
-            zoom: 13
+            zoom: 7
           });
           PostMapService.initMap(this.map);
           // console.log("map created");
@@ -119,7 +119,17 @@ export default {
 
 <style scoped>
 #map {
-  height: 900px;
+  height: 80vh;
+}
+.main-map-page{
+  margin: 3%;
+  border: 1px solid gray;
+  border-radius: 5px
+}
+.main-map-page h1 {
+    background-color: gray;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium';
 }
 
 html,
