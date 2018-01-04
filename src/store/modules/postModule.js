@@ -18,8 +18,11 @@ export default {
             }
 
     },
-
+  // state.feed =newfeed
     mutations: {
+        addNewStory(state, story){
+            state.feed.push(story)
+        },
         clearFeed(state,feed){
             state.feed = feed;
         },
@@ -28,7 +31,8 @@ export default {
         },
         setFeed(state, feed) {
             console.log('feed goes into state: ',feed)
-            state.feed.push(...feed)
+            // state.feed.push(...feed)
+            state.feed = feed
         },
         setPosts(state, posts) {
            

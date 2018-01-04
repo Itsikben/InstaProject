@@ -47,8 +47,8 @@ new Vue({
     },
     sendNewPost(post){
       console.log('new post received: ',post)
-      post = [post]
-      this.$store.commit('setFeed', post)
+      // post = [post]
+      this.$store.commit('addNewStory', post)
     }
   }
   

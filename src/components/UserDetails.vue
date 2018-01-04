@@ -67,7 +67,8 @@ export default {
 
 <style>
 .profile-holder {
-  max-width: 80%;
+  width: 90%;
+  max-width: 800px;
   margin: auto;
   display: flex;
   flex-direction: row-reverse;

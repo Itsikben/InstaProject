@@ -23,10 +23,10 @@
         <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
         <p class="likesnumber">{{story.likes.length}}</p>
       </div>
-      <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
+      <!-- <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i> -->
     </div>
     <div class="post-content">
-      <span class="sub-user-name" >{{story.username}}:</span> 
+      <span class="sub-user-name" ></span> 
       <span>{{story.text}}</span>     
     </div>
     <div class="post-comments">
@@ -99,8 +99,8 @@ export default {
     like() {
       this.isLiked = true;
       var likeInfo = {
-        userId: this.$store.state.user.user._id,
-        storyId: this.story._id
+      userId: this.$store.state.user.user._id,
+      storyId: this.story._id
       };
       this.$socket.emit("sendLike", likeInfo);
     },
