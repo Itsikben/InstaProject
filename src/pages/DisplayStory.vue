@@ -92,7 +92,10 @@ export default {
     },
     isLiked() {
       return this.story.likes.indexOf(this.$store.state.user.user._id) !== -1;
-    }
+    },
+    isGuest() {
+      return this.$store.state.user.isGuest;
+    },
   },
   watch: {},
   methods: {
