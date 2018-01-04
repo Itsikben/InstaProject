@@ -97,7 +97,8 @@ export default {
       }, 1000);
     },
     like() {
-      this.isLiked = true;
+    //  this.story.likes.push(this.$store.state.user.user._id)
+    //  this.isLiked = true;
       var likeInfo = {
       userId: this.$store.state.user.user._id,
       storyId: this.story._id
