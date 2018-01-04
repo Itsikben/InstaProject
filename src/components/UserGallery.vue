@@ -78,7 +78,8 @@ export default {
 
 <style>
 .photos-holder {
-  max-width: 80%;
+  width: 90%;
+  max-width: 800px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
