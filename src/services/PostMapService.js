@@ -10,59 +10,13 @@ function initMap(map, lat, lng, zoom) {
     if (!lat) lat = 31.7767189;
     if (!lng) lng = 35.2345085;
     if (!zoom) zoom = 13;
-
-    // var map = new google.maps.Map(
-    //     document.getElementById('map'),
-    //     {
-    //         center: { lat: lat, lng: lng },
-    //         zoom: zoom,
-    //     }
-    // );
     console.log('map:', map, '. lat:', lat, '. lng:', lng, '. zoom:', zoom)
-    var contentString = `<div id="content">
-    <div id="siteNotice">
-    <h1>Post</h1>
-    </div> 
-   </div>`;
-
-
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-
-    });
 
     var icons = {
         pointer: {
             icon: "https://png.icons8.com/map-pin/color/48/000000"
         }
     };
-
-    // var marker = new google.maps.Marker({
-    //     position: new google.maps.LatLng(lat, lng),
-    //     icon: icons.pointer.icon,
-    //     map: map,
-    //     title: 'my post'
-    // });
-    var posts = [];
-
-    posts.forEach(function (feature) {
-        var iconUrl = (icons[feature.tag].icon);
-        var infowindow = new google.maps.InfoWindow({
-            content: feature.name + '<br>' + '  description: ' + feature.description
-        });
-
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(feature.lat, feature.lng),
-            icon: iconUrl || icons[0].icon,
-            map: map,
-            title: feature.name,
-
-        });
-        marker.addListener('click', function () {
-            infowindow.open(map, marker);
-        });
-    });
-
 }
 
 function getMyLocation() {

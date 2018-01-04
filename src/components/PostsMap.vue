@@ -26,9 +26,9 @@ export default {
     };
   },
   props: ["isMapShow"],
-  created() {
+  mounted() {
     this.runderMap().then(() => {
-      this.runderMarkers();
+      this.renderMarkers();
     });
   },
   methods: {
@@ -49,22 +49,23 @@ export default {
             center: { lat: 31.7767189, lng: 35.23452 },
             zoom: 13
           });
-          PostMapService.initMap(this.map);
+          // PostMapService.initMap(this.map);
           // console.log("map created");
           resolve();
         };
       });
     },
-    runderMarkers() {
+    renderMarkers() {
       var markers = [];
       // var map = document.getElementById("map");
       console.log("feed in PostsMap > runderMarker", this.feed);
       var self = this;
-      console.log({self})
+      console.log({ self });
       // console.log("self.map in rundermap", self.map);
       this.feed.forEach(story => {
         // console.log(story);
-        if (!isNaN(story.geolocation.lat) && !isNaN(story.geolocation.lng)) {
+
+        if (story.geolocation.lat && story.geolocation.lng) {
           var contentString = `<div id="content"> 
           <div id="siteNotice"> 
           </div>
@@ -101,10 +102,10 @@ export default {
           markers.push(marker);
         }
       });
-      // var markerCluster = new MarkerClusterer(self.map, markers, {
-      //   imagePath:
-      //     "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
-      // });
+      var markerCluster = new MarkerClusterer(self.map, markers, {
+        imagePath:
+          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+      });
     }
   },
   components: {},
